@@ -1,0 +1,41 @@
+---
+name: Update BSA Calendar
+on:
+  # manual trigger
+  workflow_dispatch: {}
+  schedule:
+    # hourly at minute 42
+    - cron: "42 * * * *"
+jobs:
+  update_data:
+    name: Rebuild BSA calendar
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: gh-pages
+
+      - name: Create dummy page
+        run: |
+          echo "<p>Seite um $(date) neu generiert" > bsa-calendar.html
+
+      - name: Push updates
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+          git add bsa-calendar.html
+
+          set +e
+          git commit -m "Update bsa-calendar.html"
+          if [ $? -eq 0 ]; then
+            set -e
+            git push origin gh-pages
+          else
+            echo "Files up to date"
+          fi
