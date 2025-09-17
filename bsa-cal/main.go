@@ -97,6 +97,11 @@ func main() {
 			log.Printf("Failed to parse time %v: %v\n", rawDate, err)
 			continue
 		}
+		if date.Before(time.Now()) {
+			log.Printf("Skipping past date %v\n", date)
+			continue
+		}
+
 		localDate := date.In(berlin)
 		if localDate.Hour() != 0 {
 			log.Fatalf("Retrieved date is not truncated to day, got %v, local: %v\n", rawDate, localDate)
