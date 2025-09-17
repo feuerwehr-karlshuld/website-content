@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-const timeFormat = "2006-01-02 15:04"
+const timeFormat = "02.01.2006"
 const resultFile = "bsa-schedule.html"
 
 const htmlResultTmpl = `<!DOCTYPE html>
@@ -51,10 +51,14 @@ type BsaSchedule struct {
 }
 
 func main() {
-
 	googleSpreadsheetApi, ok := os.LookupEnv("GOOGLE_SPREADSHEET_API")
 	if !ok {
 		log.Fatalf("GOOGLE_SPREADSHEET_API unset")
+	}
+
+	berlin, err := time.LoadLocation("Europe/Berlin")
+	if err != nil {
+		log.Fatalf("Failed to load timezone: %v\n", err)
 	}
 
 	resp, err := http.DefaultClient.Get(googleSpreadsheetApi)
@@ -76,8 +80,6 @@ func main() {
 
 	var bsaSchedule []BsaSchedule
 	for _, scheduleEntry := range untypedBsaSchedule {
-		log.Printf("Weekday: %v, Date: %v, State: %v\n", scheduleEntry.Weekday, scheduleEntry.Date, scheduleEntry.State)
-
 		var weekday, rawDate, state string
 		var ok bool
 		if weekday, ok = scheduleEntry.Weekday.(string); !ok || len(strings.TrimSpace(weekday)) == 0 {
@@ -95,10 +97,14 @@ func main() {
 			log.Printf("Failed to parse time %v: %v\n", rawDate, err)
 			continue
 		}
+		localDate := date.In(berlin)
+		if localDate.Hour() != 0 {
+			log.Fatalf("Retrieved date is not truncated to day, got %v, local: %v\n", rawDate, localDate)
+		}
 
 		bsaSchedule = append(bsaSchedule, BsaSchedule{
 			Weekday: weekday,
-			Date:    date,
+			Date:    localDate,
 			State:   state,
 		})
 	}
