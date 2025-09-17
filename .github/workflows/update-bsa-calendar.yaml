@@ -4,8 +4,8 @@ on:
   # manual trigger
   workflow_dispatch: {}
   schedule:
-    # hourly at minute 42
-    - cron: "42 * * * *"
+    # hourly at minute 42 between 7 and 23 o'clock
+    - cron: "42 7-23 * * *"
 jobs:
   update_data:
     name: Rebuild BSA calendar
