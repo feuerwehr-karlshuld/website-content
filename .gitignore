@@ -1,0 +1,7 @@
+# IDEs
+.vscode
+.idea
+*.iml
+
+# Generated files
+/bsa-schedule.html

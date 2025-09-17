@@ -1,0 +1,42 @@
+.bsa-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 600px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.bsa-table thead tr {
+    background-color: #C90024;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.bsa-table th,
+.bsa-table td {
+    padding: 12px 15px;
+}
+
+.bsa-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.bsa-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.bsa-table tbody tr:last-of-type {
+    border-bottom: 2px solid #C90024;
+}
+
+.vergeben {
+    text-decoration: line-through;
+    color: #9C0707;
+}
+
+.frei {
+    font-weight: bold;
+    color: #077005;
+}
