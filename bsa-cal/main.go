@@ -53,6 +53,7 @@ var monthNames = map[time.Month]string{
 	11: "November",
 	12: "Dezember",
 }
+var bom = []byte{0xEF, 0xBB, 0xBF}
 
 type BsaScheduleUntyped struct {
 	Weekday interface{} `json:"wochentag"`
@@ -151,7 +152,7 @@ func main() {
 		}
 	}
 
-	err = os.WriteFile(resultFile, []byte(fmt.Sprintf(htmlResultTmpl, tableBody)), 0644)
+	err = os.WriteFile(resultFile, append(bom, []byte(fmt.Sprintf(htmlResultTmpl, tableBody))...), 0644)
 	if err != nil {
 		log.Fatalf("Failed to write %v: %v\n", resultFile, err)
 	}
