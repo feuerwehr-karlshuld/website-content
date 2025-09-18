@@ -32,11 +32,27 @@ const htmlResultTmpl = `<!DOCTYPE html>
 </body>
 </html>
 `
+const monthTmpl = `<tr class="month"><th colspan="3" class="month">%v</th></tr>`
 const rowTmpl = `<tr class="%v">
 	<td class="td-weekday">%v</td>
 	<td class="td-date">%v</td>
 	<td class="td-status">%v</td>
 </tr>`
+
+var monthNames = map[time.Month]string{
+	1:  "Januar",
+	2:  "Februar",
+	3:  "März",
+	4:  "April",
+	5:  "Mai",
+	6:  "Juni",
+	7:  "Juli",
+	8:  "August",
+	9:  "September",
+	10: "Oktober",
+	11: "November",
+	12: "Dezember",
+}
 
 type BsaScheduleUntyped struct {
 	Weekday interface{} `json:"wochentag"`
@@ -78,7 +94,7 @@ func main() {
 		log.Fatalf("Failed to unmarshall %v: %v\n", string(read), err)
 	}
 
-	var bsaSchedule []BsaSchedule
+	months := make(map[time.Month][]BsaSchedule, 12)
 	for _, scheduleEntry := range untypedBsaSchedule {
 		var weekday, rawDate, state string
 		var ok bool
@@ -107,18 +123,32 @@ func main() {
 			log.Fatalf("Retrieved date is not truncated to day, got %v, local: %v\n", rawDate, localDate)
 		}
 
-		bsaSchedule = append(bsaSchedule, BsaSchedule{
+		month := months[localDate.Month()]
+		if month == nil {
+			month = make([]BsaSchedule, 0)
+		}
+		month = append(month, BsaSchedule{
 			Weekday: weekday,
 			Date:    localDate,
 			State:   state,
 		})
+		months[localDate.Month()] = month
 	}
 
 	tableBody := ""
-	for _, scheduleEntry := range bsaSchedule {
-		log.Printf("Weekday: %v, Date: %v, State: %v\n", scheduleEntry.Weekday, scheduleEntry.Date, scheduleEntry.State)
+	var monthNumber time.Month = 1
+	for ; monthNumber <= 12; monthNumber++ {
+		schedule := months[monthNumber]
 
-		tableBody += fmt.Sprintf(rowTmpl, scheduleEntry.State, scheduleEntry.Weekday, scheduleEntry.Date.Format(timeFormat), scheduleEntry.State)
+		if len(schedule) > 0 {
+			log.Printf("%v:\n", monthNames[monthNumber])
+			tableBody += fmt.Sprintf(monthTmpl, monthNames[monthNumber])
+			for _, scheduleEntry := range schedule {
+				log.Printf("Weekday: %v, Date: %v, State: %v\n", scheduleEntry.Weekday, scheduleEntry.Date, scheduleEntry.State)
+
+				tableBody += fmt.Sprintf(rowTmpl, scheduleEntry.State, scheduleEntry.Weekday, scheduleEntry.Date.Format(timeFormat), scheduleEntry.State)
+			}
+		}
 	}
 
 	err = os.WriteFile(resultFile, []byte(fmt.Sprintf(htmlResultTmpl, tableBody)), 0644)
