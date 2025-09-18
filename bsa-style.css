@@ -41,3 +41,8 @@
     font-weight: bold;
     color: #077005;
 }
+
+tr .month {
+    background-color: #C90024B3;
+    color: white;
+}
