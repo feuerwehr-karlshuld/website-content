@@ -49,6 +49,33 @@
           "sceneId": "halle_oben",
           "targetYaw": 35,
           "targetPitch": -10
+        },
+        {
+          "pitch": -7,
+          "yaw": -5,
+          "type": "scene",
+          "text": "vor die Fahrzeuge",
+          "sceneId": "halle_vorne",
+          "targetYaw": 35,
+          "targetPitch": -1
+        },
+        {
+          "pitch": 3,
+          "yaw": 25,
+          "type": "scene",
+          "text": "einsteigen",
+          "sceneId": "lf",
+          "targetYaw": 0,
+          "targetPitch": 0
+        },
+        {
+          "pitch": -10,
+          "yaw": 105,
+          "type": "scene",
+          "text": "zur Schlauchpflege",
+          "sceneId": "schlauchpflege",
+          "targetYaw": 30,
+          "targetPitch": 0
         }
       ]
     },
@@ -98,6 +125,64 @@
           "sceneId": "halle_hinten",
           "targetYaw": 35,
           "targetPitch": -1
+        },
+        {
+          "pitch": 0,
+          "yaw": 95,
+          "type": "scene",
+          "text": "einsteigen",
+          "sceneId": "lf",
+          "targetYaw": 0,
+          "targetPitch": 0
+        }
+      ]
+    },
+
+    "lf": {
+      "title": "Mannschaftsraum Löschfahrzeug",
+      "hfov": 120,
+      "pitch": 0,
+      "yaw": 0,
+      "type": "equirectangular",
+      "panorama": "https://github.feuerwehr-karlshuld.de/360/img/lf.jpg",
+      "hotSpots": [
+        {
+          "pitch": -10,
+          "yaw": 80,
+          "type": "scene",
+          "text": "aussteigen",
+          "sceneId": "halle_vorne",
+          "targetYaw": 60,
+          "targetPitch": 0
+        },
+        {
+          "pitch": -10,
+          "yaw": -100,
+          "type": "scene",
+          "text": "aussteigen",
+          "sceneId": "halle_hinten",
+          "targetYaw": 40,
+          "targetPitch": 0
+        }
+      ]
+    },
+
+    "schlauchpflege": {
+      "title": "Schlauchpflegeprozessstraße",
+      "hfov": 120,
+      "pitch": 0,
+      "yaw": 30,
+      "type": "equirectangular",
+      "panorama": "https://github.feuerwehr-karlshuld.de/360/img/schlauchpflege.jpg",
+      "hotSpots": [
+        {
+          "pitch": -5,
+          "yaw": -180,
+          "type": "scene",
+          "text": "zurück in die Fahrzeughalle",
+          "sceneId": "halle_hinten",
+          "targetYaw": 80,
+          "targetPitch": 0
         }
       ]
     }

@@ -3,134 +3,14 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Tour durchs Gerätehaus</title>
-        <link
-            rel="stylesheet"
-            href="https://github.feuerwehr-karlshuld.de/360/pannellum.css"
-        />
-        <script
-            type="text/javascript"
-            src="https://github.feuerwehr-karlshuld.de/360/pannellum.js"
-        ></script>
-        <style>
-            #panorama {
-                width: 1100px;
-                height: 600px;
-            }
-        </style>
     </head>
     <body>
-        <div id="panorama"></div>
-        <script>
-            pannellum.viewer("panorama", {
-                autoLoad: false,
-                default: {
-                    firstScene: "eingang",
-                    sceneFadeDuration: 500,
-                },
-
-                scenes: {
-                    eingang: {
-                        title: "Eingangsbereich",
-                        hfov: 130,
-                        pitch: -1,
-                        yaw: 33,
-                        type: "equirectangular",
-                        panorama:
-                            "https://github.feuerwehr-karlshuld.de/360/img/eingang.jpg",
-                        hotSpots: [
-                            {
-                                pitch: -3,
-                                yaw: 90.5,
-                                type: "scene",
-                                text: "zur Gerätehalle",
-                                sceneId: "halle_hinten",
-                            },
-                        ],
-                    },
-
-                    halle_hinten: {
-                        title: "Gerätehalle Hinten",
-                        hfov: 130,
-                        pitch: -1,
-                        yaw: 35,
-                        type: "equirectangular",
-                        panorama:
-                            "https://github.feuerwehr-karlshuld.de/360/img/halle_hinten.jpg",
-                        hotSpots: [
-                            {
-                                pitch: -22,
-                                yaw: -112,
-                                type: "scene",
-                                text: "in den Sozialtrakt",
-                                sceneId: "eingang",
-                                targetYaw: 33,
-                                targetPitch: -1,
-                            },
-                            {
-                                pitch: 18,
-                                yaw: 90,
-                                type: "scene",
-                                text: "zur oberen Ebene der Gerätehalle",
-                                sceneId: "halle_oben",
-                                targetYaw: 35,
-                                targetPitch: -10,
-                            },
-                        ],
-                    },
-
-                    halle_oben: {
-                        title: "Gerätehalle Oben",
-                        hfov: 120,
-                        pitch: -10,
-                        yaw: 35,
-                        type: "equirectangular",
-                        panorama:
-                            "https://github.feuerwehr-karlshuld.de/360/img/halle_oben.jpg",
-                        hotSpots: [
-                            {
-                                pitch: -20,
-                                yaw: -40,
-                                type: "scene",
-                                text: "wieder nach unten",
-                                sceneId: "halle_hinten",
-                                targetYaw: 35,
-                                targetPitch: -1,
-                            },
-                            {
-                                pitch: -27,
-                                yaw: 45,
-                                type: "scene",
-                                text: "vor die Fahrzeuge",
-                                sceneId: "halle_vorne",
-                                targetYaw: 35,
-                                targetPitch: -1,
-                            },
-                        ],
-                    },
-
-                    halle_vorne: {
-                        title: "Gerätehalle Vorne",
-                        hfov: 120,
-                        pitch: 0,
-                        yaw: 40,
-                        type: "equirectangular",
-                        panorama:
-                            "https://github.feuerwehr-karlshuld.de/360/img/halle_vorne.jpg",
-                        hotSpots: [
-                            {
-                                pitch: -8,
-                                yaw: 127,
-                                type: "scene",
-                                text: "wieder nach hinten",
-                                sceneId: "halle_hinten",
-                                targetYaw: 35,
-                                targetPitch: -1,
-                            },
-                        ],
-                    },
-                },
-            });
-        </script>
+        <iframe
+            width="100%"
+            height="600"
+            allowfullscreen
+            style="border-style: none"
+            src="http://localhost:8080/pannellum.htm#config=http://localhost:8080/tour.json"
+        ></iframe>
     </body>
 </html>
