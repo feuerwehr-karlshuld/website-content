@@ -1,11 +1,75 @@
 {
   "autoLoad": true,
   "default": {
-    "firstScene": "eingang",
+    "firstScene": "eingang_aussen",
     "sceneFadeDuration": 500
   },
 
   "scenes": {
+    "eingang_aussen": {
+      "title": "Vorplatz",
+      "hfov": 105,
+      "pitch": -1,
+      "yaw": -30,
+      "type": "equirectangular",
+      "panorama": "https://github.feuerwehr-karlshuld.de/360/img/eingang_aussen.jpg",
+      "hotSpots": [
+        {
+          "pitch": -3,
+          "yaw": -5,
+          "type": "scene",
+          "text": "bitte treten Sie ein",
+          "sceneId": "eingang"
+        },
+        {
+          "pitch": -1,
+          "yaw": -65,
+          "type": "scene",
+          "text": "auf den Parkplatz",
+          "sceneId": "parkplatz"
+        }
+      ]
+    },
+
+    "parkplatz": {
+      "title": "Parkplatz",
+      "hfov": 105,
+      "pitch": -1,
+      "yaw": -18,
+      "type": "equirectangular",
+      "panorama": "https://github.feuerwehr-karlshuld.de/360/img/parkplatz.jpg",
+      "hotSpots": [
+        {
+          "pitch": 2,
+          "yaw": 52,
+          "type": "scene",
+          "text": "zum Eingang",
+          "sceneId": "eingang_aussen"
+        },
+        {
+          "pitch": 2,
+          "yaw": -53,
+          "type": "scene",
+          "text": "in die Fahrzeughalle",
+          "sceneId": "halle_vorne"
+        },
+        {
+          "pitch": 1,
+          "yaw": -73,
+          "type": "scene",
+          "text": "neben die Fahrzeughalle",
+          "sceneId": "eck_fahrzeughalle"
+        },
+        {
+          "pitch": 1,
+          "yaw": -68,
+          "type": "scene",
+          "text": "in die Waschhalle",
+          "sceneId": "waschhalle"
+        }
+      ]
+    },
+
     "eingang": {
       "title": "Eingangsbereich",
       "hfov": 100,
@@ -20,6 +84,70 @@
           "type": "scene",
           "text": "zur Gerätehalle",
           "sceneId": "halle_hinten"
+        },
+        {
+          "pitch": -11,
+          "yaw": -95,
+          "type": "scene",
+          "text": "nach Außen",
+          "sceneId": "eingang_aussen"
+        }
+      ]
+    },
+
+    "eck_fahrzeughalle": {
+      "title": "Neben der Fahrzeughalle",
+      "hfov": 105,
+      "pitch": 2,
+      "yaw": -40,
+      "type": "equirectangular",
+      "panorama": "https://github.feuerwehr-karlshuld.de/360/img/eck_fahrzeughalle.jpg",
+      "hotSpots": [
+        {
+          "pitch": -2,
+          "yaw": 18,
+          "type": "scene",
+          "text": "auf den Parkplatz",
+          "sceneId": "parkplatz"
+        },
+        {
+          "pitch": -7,
+          "yaw": -73,
+          "type": "scene",
+          "text": "zur Brandsimulationsanlage",
+          "sceneId": "container"
+        }
+      ]
+    },
+
+    "container": {
+      "title": "Brandsimulationsanlage",
+      "hfov": 105,
+      "pitch": 2,
+      "yaw": -40,
+      "type": "equirectangular",
+      "panorama": "https://github.feuerwehr-karlshuld.de/360/img/container.jpg",
+      "hotSpots": [
+        {
+          "pitch": -6,
+          "yaw": 240,
+          "type": "scene",
+          "text": "neben die Fahrzeughalle",
+          "sceneId": "eck_fahrzeughalle"
+        },
+        {
+          "pitch": 6,
+          "yaw": -258,
+          "type": "scene",
+          "text": "vor den Eingang",
+          "sceneId": "eingang_aussen"
+        },
+        {
+          "pitch": -5,
+          "yaw": -205,
+          "type": "scene",
+          "text": "zur Schlauchpflege",
+          "sceneId": "schlauchpflege"
         }
       ]
     },
@@ -121,7 +249,7 @@
           "pitch": -8,
           "yaw": 127,
           "type": "scene",
-          "text": "wieder nach hinten",
+          "text": "nach hinten",
           "sceneId": "halle_hinten",
           "targetYaw": 35,
           "targetPitch": -1
@@ -179,10 +307,81 @@
           "pitch": -5,
           "yaw": -180,
           "type": "scene",
-          "text": "zurück in die Fahrzeughalle",
+          "text": "in die Fahrzeughalle",
           "sceneId": "halle_hinten",
           "targetYaw": 80,
           "targetPitch": 0
+        },
+        {
+          "pitch": -1,
+          "yaw": -195,
+          "type": "scene",
+          "text": "zur Brandsimulationsanlage",
+          "sceneId": "container"
+        },
+        {
+          "pitch": -3,
+          "yaw": -10,
+          "type": "scene",
+          "text": "zur Schlauchannahme",
+          "sceneId": "schlauchannahme"
+        }
+      ]
+    },
+
+    "schlauchannahme": {
+      "title": "Schlauchannahme",
+      "hfov": 120,
+      "pitch": 0,
+      "yaw": 30,
+      "type": "equirectangular",
+      "panorama": "https://github.feuerwehr-karlshuld.de/360/img/schlauchannahme.jpg",
+      "hotSpots": [
+        {
+          "pitch": -1,
+          "yaw": 10,
+          "type": "scene",
+          "text": "zur Schlauchpflegeprozessstraße",
+          "sceneId": "schlauchpflege"
+        },
+        {
+          "pitch": -1,
+          "yaw": 90,
+          "type": "scene",
+          "text": "zur Waschhalle",
+          "sceneId": "waschhalle"
+        }
+      ]
+    },
+
+    "waschhalle": {
+      "title": "Waschhalle",
+      "hfov": 120,
+      "pitch": 0,
+      "yaw": 30,
+      "type": "equirectangular",
+      "panorama": "https://github.feuerwehr-karlshuld.de/360/img/waschhalle.jpg",
+      "hotSpots": [
+        {
+          "pitch": -3,
+          "yaw": 24,
+          "type": "scene",
+          "text": "zur Schlauchannahme",
+          "sceneId": "schlauchannahme"
+        },
+        {
+          "pitch": 3,
+          "yaw": 26,
+          "type": "scene",
+          "text": "in die Fahrzeughalle",
+          "sceneId": "halle_hinten"
+        },
+        {
+          "pitch": -2,
+          "yaw": 152,
+          "type": "scene",
+          "text": "auf den Parkplatz",
+          "sceneId": "parkplatz"
         }
       ]
     }
