@@ -1,7 +1,7 @@
 {
   "autoLoad": true,
   "default": {
-    "firstScene": "eingang_aussen",
+    "firstScene": "eingang",
     "sceneFadeDuration": 500
   },
 
@@ -72,22 +72,22 @@
 
     "eingang": {
       "title": "Eingangsbereich",
-      "hfov": 100,
-      "pitch": -1,
-      "yaw": 33,
+      "hfov": 120,
+      "pitch": -8,
+      "yaw": -45,
       "type": "equirectangular",
       "panorama": "https://github.feuerwehr-karlshuld.de/360/img/eingang.jpg",
       "hotSpots": [
         {
-          "pitch": -3,
-          "yaw": 90.5,
+          "pitch": 10,
+          "yaw": 0,
           "type": "scene",
           "text": "zur Gerätehalle",
           "sceneId": "halle_hinten"
         },
         {
-          "pitch": -11,
-          "yaw": -95,
+          "pitch": -19,
+          "yaw": -185,
           "type": "scene",
           "text": "nach Außen",
           "sceneId": "eingang_aussen"
