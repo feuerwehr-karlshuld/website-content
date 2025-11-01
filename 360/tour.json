@@ -1,7 +1,7 @@
 {
   "autoLoad": true,
   "default": {
-    "firstScene": "eingang",
+    "firstScene": "stueberl",
     "sceneFadeDuration": 500
   },
 
@@ -13,6 +13,31 @@
       "yaw": -30,
       "type": "equirectangular",
       "panorama": "https://github.feuerwehr-karlshuld.de/360/img/eingang_aussen.jpg",
+      "hotSpots": [
+        {
+          "pitch": -3,
+          "yaw": -5,
+          "type": "scene",
+          "text": "bitte treten Sie ein",
+          "sceneId": "eingang"
+        },
+        {
+          "pitch": -1,
+          "yaw": -65,
+          "type": "scene",
+          "text": "auf den Parkplatz",
+          "sceneId": "parkplatz"
+        }
+      ]
+    },
+
+    "stueberl": {
+      "title": "Florians-Stüberl",
+      "hfov": 105,
+      "pitch": -1,
+      "yaw": -30,
+      "type": "equirectangular",
+      "panorama": "https://github.feuerwehr-karlshuld.de/360/img/stueberl.jpg",
       "hotSpots": [
         {
           "pitch": -3,
@@ -192,9 +217,7 @@
           "yaw": 25,
           "type": "scene",
           "text": "einsteigen",
-          "sceneId": "lf",
-          "targetYaw": 0,
-          "targetPitch": 0
+          "sceneId": "lf"
         },
         {
           "pitch": -10,
@@ -259,9 +282,7 @@
           "yaw": 95,
           "type": "scene",
           "text": "einsteigen",
-          "sceneId": "lf",
-          "targetYaw": 0,
-          "targetPitch": 0
+          "sceneId": "lf"
         }
       ]
     },
@@ -270,24 +291,24 @@
       "title": "Mannschaftsraum Löschfahrzeug",
       "hfov": 120,
       "pitch": 0,
-      "yaw": 0,
+      "yaw": -90,
       "type": "equirectangular",
       "panorama": "https://github.feuerwehr-karlshuld.de/360/img/lf.jpg",
       "hotSpots": [
         {
-          "pitch": -10,
-          "yaw": 80,
+          "pitch": -13,
+          "yaw": -8,
           "type": "scene",
-          "text": "aussteigen",
+          "text": "nach vorne aussteigen",
           "sceneId": "halle_vorne",
           "targetYaw": 60,
           "targetPitch": 0
         },
         {
           "pitch": -10,
-          "yaw": -100,
+          "yaw": -180,
           "type": "scene",
-          "text": "aussteigen",
+          "text": "nach hinten aussteigen",
           "sceneId": "halle_hinten",
           "targetYaw": 40,
           "targetPitch": 0
