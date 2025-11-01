@@ -1,7 +1,7 @@
 {
   "autoLoad": true,
   "default": {
-    "firstScene": "stueberl",
+    "firstScene": "eingang_aussen",
     "sceneFadeDuration": 500
   },
 
@@ -33,25 +33,107 @@
 
     "stueberl": {
       "title": "Florians-Stüberl",
-      "hfov": 105,
-      "pitch": -1,
-      "yaw": -30,
+      "hfov": 100,
+      "pitch": -5,
+      "yaw": 25,
       "type": "equirectangular",
       "panorama": "https://github.feuerwehr-karlshuld.de/360/img/stueberl.jpg",
       "hotSpots": [
         {
           "pitch": -3,
-          "yaw": -5,
+          "yaw": 0,
           "type": "scene",
-          "text": "bitte treten Sie ein",
-          "sceneId": "eingang"
+          "text": "zur Brandsimulationsanlage",
+          "sceneId": "container"
+        },
+        {
+          "pitch": -5,
+          "yaw": -165,
+          "type": "scene",
+          "text": "in den Lehrsaal 2",
+          "sceneId": "lehrsaal2"
+        }
+      ]
+    },
+
+    "lehrsaal2": {
+      "title": "Lehrsaal 2",
+      "hfov": 100,
+      "pitch": -5,
+      "yaw": -25,
+      "type": "equirectangular",
+      "panorama": "https://github.feuerwehr-karlshuld.de/360/img/lehrsaal2.jpg",
+      "hotSpots": [
+        {
+          "pitch": -3,
+          "yaw": 22,
+          "type": "scene",
+          "text": "in den Lehrsaal 1",
+          "sceneId": "lehrsaal1"
+        },
+        {
+          "pitch": -3,
+          "yaw": -35,
+          "type": "scene",
+          "text": "ins Stüberl",
+          "sceneId": "stueberl"
+        }
+      ]
+    },
+
+    "lehrsaal1": {
+      "title": "Lehrsaal 1",
+      "hfov": 120,
+      "pitch": -5,
+      "yaw": 80,
+      "type": "equirectangular",
+      "panorama": "https://github.feuerwehr-karlshuld.de/360/img/lehrsaal1.jpg",
+      "hotSpots": [
+        {
+          "pitch": -2,
+          "yaw": 63,
+          "type": "scene",
+          "text": "in den Lehrsaal 2",
+          "sceneId": "lehrsaal2"
         },
         {
           "pitch": -1,
-          "yaw": -65,
+          "yaw": 123,
           "type": "scene",
-          "text": "auf den Parkplatz",
-          "sceneId": "parkplatz"
+          "text": "in den Jugendraum",
+          "sceneId": "jugendraum"
+        }
+      ]
+    },
+
+    "jugendraum": {
+      "title": "Jugendraum",
+      "hfov": 120,
+      "pitch": -5,
+      "yaw": 170,
+      "type": "equirectangular",
+      "panorama": "https://github.feuerwehr-karlshuld.de/360/img/jugendraum.jpg",
+      "hotSpots": [
+        {
+          "pitch": -4,
+          "yaw": -8,
+          "type": "scene",
+          "text": "in die Fahrzeughalle",
+          "sceneId": "halle_hinten"
+        },
+        {
+          "pitch": -1,
+          "yaw": -30,
+          "type": "scene",
+          "text": "in den Lehrsaal 1",
+          "sceneId": "lehrsaal1"
+        },
+        {
+          "pitch": -1,
+          "yaw": 175,
+          "type": "scene",
+          "text": "zur Brandsimulationsanlage",
+          "sceneId": "container"
         }
       ]
     },
@@ -104,11 +186,39 @@
       "panorama": "https://github.feuerwehr-karlshuld.de/360/img/eingang.jpg",
       "hotSpots": [
         {
-          "pitch": 10,
-          "yaw": 0,
+          "pitch": 14,
+          "yaw": -2,
           "type": "scene",
           "text": "zur Gerätehalle",
           "sceneId": "halle_hinten"
+        },
+        {
+          "pitch": 4,
+          "yaw": 9,
+          "type": "scene",
+          "text": "Stüberl",
+          "sceneId": "stueberl"
+        },
+        {
+          "pitch": 7,
+          "yaw": 5,
+          "type": "scene",
+          "text": "Lehrsaal 2",
+          "sceneId": "lehrsaal2"
+        },
+        {
+          "pitch": 10,
+          "yaw": 3,
+          "type": "scene",
+          "text": "Lehrsaal 1",
+          "sceneId": "lehrsaal1"
+        },
+        {
+          "pitch": 12,
+          "yaw": 2,
+          "type": "scene",
+          "text": "Jugendraum",
+          "sceneId": "jugendraum"
         },
         {
           "pitch": -19,
@@ -166,6 +276,20 @@
           "type": "scene",
           "text": "vor den Eingang",
           "sceneId": "eingang_aussen"
+        },
+        {
+          "pitch": 1,
+          "yaw": -250,
+          "type": "scene",
+          "text": "ins Stüberl",
+          "sceneId": "stueberl"
+        },
+        {
+          "pitch": 0,
+          "yaw": -230,
+          "type": "scene",
+          "text": "in den Jugendraum",
+          "sceneId": "jugendraum"
         },
         {
           "pitch": -5,
