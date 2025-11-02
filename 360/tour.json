@@ -193,32 +193,11 @@
           "sceneId": "halle_hinten"
         },
         {
-          "pitch": 4,
+          "pitch": 3,
           "yaw": 9,
           "type": "scene",
           "text": "Stüberl",
           "sceneId": "stueberl"
-        },
-        {
-          "pitch": 7,
-          "yaw": 5,
-          "type": "scene",
-          "text": "Lehrsaal 2",
-          "sceneId": "lehrsaal2"
-        },
-        {
-          "pitch": 10,
-          "yaw": 3,
-          "type": "scene",
-          "text": "Lehrsaal 1",
-          "sceneId": "lehrsaal1"
-        },
-        {
-          "pitch": 12,
-          "yaw": 2,
-          "type": "scene",
-          "text": "Jugendraum",
-          "sceneId": "jugendraum"
         },
         {
           "pitch": -19,
