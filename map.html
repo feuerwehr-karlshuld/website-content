@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Map</title>
+
+  <!-- Leaflet 1.9.4 CSS — MUST load before leaflet.js (D-07) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <!-- Fallback CDN (cdnjs) if unpkg is unavailable (D-08):
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+  -->
+
+  <style>
+    html, body, #map {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    /* Category marker styles (Phase 2) */
+    .marker-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      line-height: 1;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+    /* Permanent label tooltips */
+    .leaflet-tooltip.marker-label {
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(0,0,0,0.25);
+      border-radius: 3px;
+      box-shadow: none;
+      color: #222;
+      font-size: 11px;
+      padding: 2px 5px;
+      white-space: nowrap;
+    }
+    .leaflet-tooltip.marker-label::before {
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <!-- Leaflet 1.9.4 JS — load after CSS (D-07) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Fallback CDN (cdnjs) if unpkg is unavailable (D-08):
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  -->
+
+  <script>
+    /* ============================================================
+     * MAP CONFIG — Edit these values to set the default view.
+     * fit-bounds will override this automatically in Phase 2
+     * once annotation markers are present (D-02).
+     * ============================================================ */
+    const MAP_CONFIG = {
+      lat:  48.675823,   // default center latitude
+      lng:  11.296391,    // default center longitude
+      zoom: 16        // default zoom level (1–19)
+    };
+    /* ============================================================ */
+
+    const map = L.map('map', {
+      // scrollWheelZoom: true is the Leaflet default — accepted per D-03.
+      // If embedding in a page where scroll hijack is a concern, set to false.
+      // NOTE (D-05): If this file is loaded in a hidden/deferred container,
+      // call map.invalidateSize() after the container becomes visible.
+    }).setView([MAP_CONFIG.lat, MAP_CONFIG.lng], MAP_CONFIG.zoom);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    /* ============================================================
+     * ANNOTATIONS — Edit this array to add/remove/change markers.
+     * Each entry: { lat, lng, category, label }
+     * category must match a key in ICON_REGISTRY below.
+     * ============================================================ */
+    const ANNOTATIONS = [
+      { lat: 48.670639,  lng: 11.303199, category: 'parking',     label: 'Schotterparkplatz Oberer Kanal'       },
+      { lat: 48.674733,  lng: 11.298989, category: 'parking',     label: 'Parkplatz Raiffeisen'  },
+      { lat: 48.675945,  lng: 11.296260, category: 'parking',     label: 'Parkplatz Kirche/Rathaus'   },
+      { lat: 48.679873,  lng: 11.289805, category: 'parking',     label: 'Parkplatz Volksfestplatz'   },
+      { lat: 48.671971,  lng: 11.298701, category: 'firestation', label: 'Feuerwehrhaus' },
+      { lat: 48.676723,  lng: 11.297191, category: 'church',      label: 'Kirche St. Ludwig'     },
+    ];
+    /* ============================================================ */
+
+    /* ============================================================
+     * CATEGORY_CONFIG — Edit to configure emoji icon and label
+     * background color per category.
+     * To add a new category: add an entry here. No other changes needed.
+     * ============================================================ */
+    const CATEGORY_CONFIG = {
+      parking:     { emoji: '🅿️', labelColor: '#add8e6' },  // light-blue
+      church:      { emoji: '⛪',  labelColor: '#ffff99' },  // yellow
+      firestation: { emoji: '🚒', labelColor: '#ff6b6b' }   // red
+    };
+    /* ============================================================ */
+
+    /* Inject per-category label CSS classes */
+    (function() {
+      var style = document.createElement('style');
+      var rules = Object.keys(CATEGORY_CONFIG).map(function(cat) {
+        var color = CATEGORY_CONFIG[cat].labelColor;
+        return '.marker-label-' + cat + ' { background: ' + color + ' !important; }';
+      });
+      style.textContent = rules.join('\n');
+      document.head.appendChild(style);
+    })();
+
+    /* Build icon registry from CATEGORY_CONFIG */
+    const ICON_REGISTRY = {};
+    Object.keys(CATEGORY_CONFIG).forEach(function(cat) {
+      ICON_REGISTRY[cat] = L.divIcon({
+        className: '',
+        html: '<div class="marker-icon">' + CATEGORY_CONFIG[cat].emoji + '</div>',
+        iconSize: [28, 28],
+        iconAnchor: [14, 14],
+        popupAnchor: [0, -16]
+      });
+    });
+
+    /* Render markers and collect bounds for fitBounds (ANN-04, MAP-02) */
+    var bounds = [];
+    ANNOTATIONS.forEach(function(entry) {
+      var icon = ICON_REGISTRY[entry.category];
+      L.marker([entry.lat, entry.lng], { icon: icon })
+       .bindTooltip(entry.label, {
+         permanent: true,
+         direction: 'right',
+         className: 'marker-label marker-label-' + entry.category,
+         offset: [10, 0]
+       })
+       .addTo(map);
+      bounds.push([entry.lat, entry.lng]);
+    });
+
+    /* Auto-fit map to show all markers (replaces MAP_CONFIG setView) */
+    if (bounds.length > 0) {
+      map.fitBounds(bounds, { padding: [32, 32] });
+    }
+  </script>
+</body>
+</html>
