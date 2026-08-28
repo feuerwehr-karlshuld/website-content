@@ -64,13 +64,44 @@ jobs:
         run: |
           cat > teams-payload.json <<EOF
           {
-            "status": "failure",
-            "workflow": "${GITHUB_WORKFLOW}",
-            "repository": "${GITHUB_REPOSITORY}",
-            "ref": "${GITHUB_REF_NAME}",
-            "triggeredBy": "${GITHUB_ACTOR}",
-            "runUrl": "${RUN_URL}",
-            "summary": "Workflow ${GITHUB_WORKFLOW} failed in ${GITHUB_REPOSITORY}"
+            "type": "message",
+            "attachments": [
+              {
+                "contentType": "application/vnd.microsoft.card.adaptive",
+                "contentUrl": null,
+                "content": {
+                  "\$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                  "type": "AdaptiveCard",
+                  "version": "1.2",
+                  "body": [
+                    {
+                      "type": "TextBlock",
+                      "size": "Medium",
+                      "weight": "Bolder",
+                      "color": "Attention",
+                      "wrap": true,
+                      "text": "⚠️ Workflow failed: ${GITHUB_WORKFLOW}"
+                    },
+                    {
+                      "type": "FactSet",
+                      "facts": [
+                        { "title": "Repository", "value": "${GITHUB_REPOSITORY}" },
+                        { "title": "Branch/Ref", "value": "${GITHUB_REF_NAME}" },
+                        { "title": "Triggered by", "value": "${GITHUB_ACTOR}" },
+                        { "title": "Run ID", "value": "${GITHUB_RUN_ID}" }
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": "Action.OpenUrl",
+                      "title": "View run",
+                      "url": "${RUN_URL}"
+                    }
+                  ]
+                }
+              }
+            ]
           }
           EOF
 
