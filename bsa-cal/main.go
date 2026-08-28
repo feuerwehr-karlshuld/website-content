@@ -17,6 +17,7 @@ const resultFile = "bsa-schedule.html"
 const htmlResultTmpl = `<!DOCTYPE html>
 <html><head><link rel="stylesheet" href="bsa-style.css"></head>
 <body>
+<span class="updated-at">Stand: <b><i>%v</i></b></span>
 <table class="bsa-table">
 <thead>
 	<tr>
@@ -56,9 +57,9 @@ var monthNames = map[time.Month]string{
 var bom = []byte{0xEF, 0xBB, 0xBF}
 
 type BsaScheduleUntyped struct {
-	Weekday interface{} `json:"wochentag"`
-	Date    interface{} `json:"datum"`
-	State   interface{} `json:"status"`
+	Weekday any `json:"wochentag"`
+	Date    any `json:"datum"`
+	State   any `json:"status"`
 }
 
 type BsaSchedule struct {
@@ -136,23 +137,24 @@ func main() {
 		months[localDate.Month()] = month
 	}
 
-	tableBody := ""
+	var tableBody strings.Builder
 	var monthNumber time.Month = 1
 	for ; monthNumber <= 12; monthNumber++ {
 		schedule := months[monthNumber]
 
 		if len(schedule) > 0 {
 			log.Printf("%v:\n", monthNames[monthNumber])
-			tableBody += fmt.Sprintf(monthTmpl, monthNames[monthNumber])
+			tableBody.WriteString(fmt.Sprintf(monthTmpl, monthNames[monthNumber]))
 			for _, scheduleEntry := range schedule {
 				log.Printf("Weekday: %v, Date: %v, State: %v\n", scheduleEntry.Weekday, scheduleEntry.Date, scheduleEntry.State)
 
-				tableBody += fmt.Sprintf(rowTmpl, scheduleEntry.State, scheduleEntry.Weekday, scheduleEntry.Date.Format(timeFormat), scheduleEntry.State)
+				tableBody.WriteString(fmt.Sprintf(rowTmpl, scheduleEntry.State, scheduleEntry.Weekday, scheduleEntry.Date.Format(timeFormat), scheduleEntry.State))
 			}
 		}
 	}
 
-	err = os.WriteFile(resultFile, append(bom, []byte(fmt.Sprintf(htmlResultTmpl, tableBody))...), 0644)
+	updatedAt := time.Now().Format(timeFormat)
+	err = os.WriteFile(resultFile, append(bom, []byte(fmt.Sprintf(htmlResultTmpl, updatedAt, tableBody.String()))...), 0644)
 	if err != nil {
 		log.Fatalf("Failed to write %v: %v\n", resultFile, err)
 	}
