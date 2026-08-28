@@ -60,7 +60,20 @@ jobs:
         if: failure()
         env:
           TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          curl -sS -H 'Content-Type: application/json' \
-            -d "{\"text\": \"⚠️ **${GITHUB_WORKFLOW}** failed in [${GITHUB_REPOSITORY}](https://github.com/${GITHUB_REPOSITORY}). [View run](https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID})\"}" \
+          cat > teams-payload.json <<EOF
+          {
+            "status": "failure",
+            "workflow": "${GITHUB_WORKFLOW}",
+            "repository": "${GITHUB_REPOSITORY}",
+            "ref": "${GITHUB_REF_NAME}",
+            "triggeredBy": "${GITHUB_ACTOR}",
+            "runUrl": "${RUN_URL}",
+            "summary": "Workflow ${GITHUB_WORKFLOW} failed in ${GITHUB_REPOSITORY}"
+          }
+          EOF
+
+          curl -sS -f -H 'Content-Type: application/json' \
+            -d @teams-payload.json \
             "$TEAMS_WEBHOOK_URL"
