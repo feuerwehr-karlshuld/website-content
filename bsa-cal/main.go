@@ -17,6 +17,7 @@ const resultFile = "bsa-schedule.html"
 const htmlResultTmpl = `<!DOCTYPE html>
 <html><head><link rel="stylesheet" href="bsa-style.css"></head>
 <body>
+Stand: %v
 <table class="bsa-table">
 <thead>
 	<tr>
@@ -152,7 +153,8 @@ func main() {
 		}
 	}
 
-	err = os.WriteFile(resultFile, append(bom, []byte(fmt.Sprintf(htmlResultTmpl, tableBody))...), 0644)
+	updatedAt := time.Now().Format(timeFormat)
+	err = os.WriteFile(resultFile, append(bom, []byte(fmt.Sprintf(htmlResultTmpl, updatedAt, tableBody))...), 0644)
 	if err != nil {
 		log.Fatalf("Failed to write %v: %v\n", resultFile, err)
 	}
