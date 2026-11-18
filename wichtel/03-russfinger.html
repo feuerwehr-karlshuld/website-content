@@ -3,16 +3,16 @@
 <header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
 <main><div class="container"><div class="section"><div class="content-padding">
 <div class="m-preview">Vorschau: <b>03-russfinger</b> &ndash; Nachbildung der Seite <code>/test</code></div>
-<h1>test</h1>
+<h1 class="main-heading page-heading">test</h1>
 <div class="html-snippet"><h1>Outlook Kalender</h1>
 <p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
-<h2>Test Formular</h2>
+<h2 class="title">Test Formular</h2>
 <form action="#">
 <p>Dies ist nur ein Test</p>
 <div class="field-wrapper"><label>Was?</label><input type="text"></div>
 <div class="field-wrapper"><label>Wo?</label><input type="text"></div>
 <div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
-<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+<div class="button-wrapper submit"><button class="form-button btn btn-red" type="button">Wasser marsch!</button></div>
 </form>
 <div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
 <div class="download-listing-container">
@@ -32,82 +32,53 @@
 <div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
 <div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
 </div>
-<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+<div class="footer-bottom"><p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#" class="btn-cookie-settings">Cookie-Einstellungen</a></p></div>
 </div></footer>
 <!--
   03 - Russfinger (sooty fingerprints) - Feuerwehr Wichtel
-  Tiny JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+  Pure CSS (no JavaScript), no text. Paste into <INJECT_HTML_HERE>.
 
   Small sooty fingerprints and smudges appear next to the headings of the page,
-  as if somebody grabbed them with dirty little hands. They stay on the page
-  (they scroll with it) and fade in one after another.
+  as if somebody grabbed them with dirty little hands. They are drawn as ::after of the
+  headings, so they scroll with the page and fade in one after another.
 
-  Tuning: HEADINGS = which elements get smudges, MAX = how many.
+  Which headings: all h1 and h2 in <main> plus every third h3.
+  Tuning: --x / --y / --r (offset and rotation) in the three rules below.
+  Note: uses ::after of the headings. Effect 03 and 16/06 use different pseudo-elements
+  (::after / ::before), so they can be combined.
 -->
 <style>
-  .ffw-w03 {
+  :is(main h1, main h2, main h3:nth-of-type(3n+1)) {
+    position: relative;
+  }
+  :is(main h1, main h2, main h3:nth-of-type(3n+1))::after {
+    --x: 140px;
+    --y: -12px;
+    --r: 12deg;
+    --d: 0s;
+    content: "";
     position: absolute;
+    left: var(--x);
+    top: var(--y);
     width: 30px;
     height: 36px;
+    rotate: var(--r);
     pointer-events: none;
+    z-index: 2147483000;
     opacity: 0;
-    background: radial-gradient(ellipse at 50% 55%, rgba(25,25,25,.5) 0, rgba(25,25,25,.28) 45%, rgba(25,25,25,0) 72%);
-    animation: ffw-w03-in 2.5s ease-out forwards;
+    background:
+      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 36' fill='none' stroke='black' stroke-opacity='.55' stroke-width='1.1' stroke-linecap='round'><path d='M9 28c-2-6-1-13 5-16 5-2 9 1 10 6'/><path d='M12 29c-2-5-1-10 3-12 3-1 6 1 6 4'/><path d='M15 29c-1-3 0-6 2-6'/><path d='M6 24c-1-8 3-15 10-16 6-1 10 3 11 9'/></svg>") center / 100% 100% no-repeat,
+      radial-gradient(ellipse at 50% 55%, rgba(25,25,25,.5) 0, rgba(25,25,25,.28) 45%, rgba(25,25,25,0) 72%);
+    animation: ffw-w03-in 2.5s ease-out var(--d) forwards;
   }
-  .ffw-w03 svg { width: 100%; height: 100%; display: block; }
+  :is(main h1, main h2, main h3:nth-of-type(3n+1)):nth-of-type(2n)::after {
+    --x: 230px; --y: -6px; --r: -28deg; --d: 1.8s;
+  }
+  :is(main h1, main h2, main h3:nth-of-type(3n+1)):nth-of-type(3n)::after {
+    --x: 70px; --y: -16px; --r: 24deg; --d: 3.6s;
+  }
   @keyframes ffw-w03-in { to { opacity: 1; } }
   @media (prefers-reduced-motion: reduce) {
-    .ffw-w03 { animation: none; opacity: 1; }
+    :is(main h1, main h2, main h3:nth-of-type(3n+1))::after { animation: none; opacity: 1; }
   }
 </style>
-
-<script>
-(function () {
-  if (window.__ffwW03) return;
-  window.__ffwW03 = true;
-
-  var HEADINGS = 'main h1, main h2, main h3, footer h2, footer h3';
-  var MAX = 7;
-  var PRINT = '<svg viewBox="0 0 30 36" fill="none" stroke="rgba(10,10,10,.55)" stroke-width="1.1" stroke-linecap="round">' +
-    '<path d="M9 28c-2-6-1-13 5-16 5-2 9 1 10 6"/>' +
-    '<path d="M12 29c-2-5-1-10 3-12 3-1 6 1 6 4"/>' +
-    '<path d="M15 29c-1-3 0-6 2-6"/>' +
-    '<path d="M6 24c-1-8 3-15 10-16 6-1 10 3 11 9"/></svg>';
-
-  var layer = document.createElement('div');
-  layer.setAttribute('aria-hidden', 'true');
-  layer.style.cssText = 'position:absolute;left:0;top:0;width:0;height:0;overflow:visible;pointer-events:none;z-index:2147483000';
-  document.documentElement.appendChild(layer);
-
-  var items = [];
-
-  function layout() {
-    items.forEach(function (it) {
-      var r = it.t.getBoundingClientRect();
-      var show = r.width > 0 && r.height > 0;
-      it.n.style.display = show ? '' : 'none';
-      it.n.style.left = (r.left + window.pageXOffset + it.fx * Math.min(r.width, 360)) + 'px';
-      it.n.style.top = (r.top + window.pageYOffset + it.fy * r.height) + 'px';
-    });
-  }
-
-  function init() {
-    var targets = Array.prototype.slice.call(document.querySelectorAll(HEADINGS)).slice(0, MAX);
-    targets.forEach(function (t, i) {
-      var n = document.createElement('div');
-      n.className = 'ffw-w03';
-      n.innerHTML = PRINT;
-      var rot = Math.round(Math.random() * 70 - 35);
-      n.style.transform = 'rotate(' + rot + 'deg)';
-      n.style.animationDelay = (i * 1.8) + 's';
-      layer.appendChild(n);
-      items.push({ t: t, n: n, fx: 0.15 + Math.random() * 0.8, fy: -0.2 + Math.random() * 0.7 });
-    });
-    layout();
-  }
-
-  if (document.readyState === 'complete') init(); else window.addEventListener('load', init);
-  window.addEventListener('resize', layout);
-  window.addEventListener('load', function () { setTimeout(layout, 600); });
-})();
-</script>

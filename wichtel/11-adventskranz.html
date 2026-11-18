@@ -2,17 +2,17 @@
 <html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 11-adventskranz</title><link rel="stylesheet" href="preview.css"></head><body>
 <header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
 <main><div class="container"><div class="section"><div class="content-padding">
-<div class="m-preview">Vorschau: <b>11-adventskranz</b> &ndash; Nachbildung der Seite <code>/test</code><br><b>Datums-Effekt:</b> zum Testen <code>?wdate=2026-12-14</code> an die URL hängen (oder <code>FORCE_LIT</code> bzw. <code>FORCE_COUNT</code> im Effekt setzen).</div>
-<h1>test</h1>
+<div class="m-preview">Vorschau: <b>11-adventskranz</b> &ndash; Nachbildung der Seite <code>/test</code></div>
+<h1 class="main-heading page-heading">test</h1>
 <div class="html-snippet"><h1>Outlook Kalender</h1>
 <p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
-<h2>Test Formular</h2>
+<h2 class="title">Test Formular</h2>
 <form action="#">
 <p>Dies ist nur ein Test</p>
 <div class="field-wrapper"><label>Was?</label><input type="text"></div>
 <div class="field-wrapper"><label>Wo?</label><input type="text"></div>
 <div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
-<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+<div class="button-wrapper submit"><button class="form-button btn btn-red" type="button">Wasser marsch!</button></div>
 </form>
 <div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
 <div class="download-listing-container">
@@ -32,18 +32,19 @@
 <div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
 <div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
 </div>
-<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+<div class="footer-bottom"><p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#" class="btn-cookie-settings">Cookie-Einstellungen</a></p></div>
 </div></footer>
 <!--
   11 - Adventskranz (Advent wreath with fire extinguisher) - Feuerwehr Wichtel
-  Tiny JavaScript (date check only), no text. Paste into <INJECT_HTML_HERE>.
+  Pure CSS/SVG (no JavaScript), no text. Paste into <INJECT_HTML_HERE>.
 
-  A wreath with four red candles in the bottom right corner. The candles light up on the
-  four Advent Sundays (1st Advent = Sunday 3 weeks before the 4th Advent; the 4th Advent is
-  the last Sunday before 25 Dec). A red powder fire extinguisher stands next to it, just in case.
+  A wreath with four red candles in the bottom right corner. CSS cannot know the date, so
+  the four Advent Sundays run as a slow time-lapse (one loop = 60 s): the candles light up
+  one after another, burn together for a while, then all go out softly and it starts again.
+  A red powder fire extinguisher stands next to it, just in case.
 
-  TESTING: add  ?wdate=2026-12-14  to the page URL to simulate a day,
-  or set FORCE_LIT below to a number 0..4.
+  Tuning: --w (size), right/bottom (position), 60s (loop length) in the animation lines.
+  With prefers-reduced-motion all four candles simply burn.
 -->
 <style>
   #ffw-w11 {
@@ -57,15 +58,23 @@
     pointer-events: none;
     filter: drop-shadow(0 3px 3px rgba(0,0,0,.3));
   }
-  #ffw-w11 .fl      { transform-box: fill-box; transform-origin: 50% 100%; animation: ffw-w11-flicker 1.9s ease-in-out infinite alternate; }
-  #ffw-w11 .fl.f2   { animation-duration: 2.3s; animation-delay: -.6s; }
-  #ffw-w11 .fl.f3   { animation-duration: 1.7s; animation-delay: -1.1s; }
-  #ffw-w11 .fl.f4   { animation-duration: 2.6s; animation-delay: -.2s; }
+  #ffw-w11 .fl      { transform-box: fill-box; transform-origin: 50% 100%; opacity: 0; }
+  #ffw-w11 .fl.f1   { animation: ffw-w11-flicker 1.9s ease-in-out infinite alternate,        ffw-w11-on1 60s linear infinite; }
+  #ffw-w11 .fl.f2   { animation: ffw-w11-flicker 2.3s ease-in-out -.6s infinite alternate,   ffw-w11-on2 60s linear infinite; }
+  #ffw-w11 .fl.f3   { animation: ffw-w11-flicker 1.7s ease-in-out -1.1s infinite alternate,  ffw-w11-on3 60s linear infinite; }
+  #ffw-w11 .fl.f4   { animation: ffw-w11-flicker 2.6s ease-in-out -.2s infinite alternate,   ffw-w11-on4 60s linear infinite; }
   @keyframes ffw-w11-flicker {
     from { transform: scale(1, 1)    skewX(-3deg); }
     to   { transform: scale(.9, 1.1) skewX(3deg); }
   }
-  @media (prefers-reduced-motion: reduce) { #ffw-w11 .fl { animation: none; } }
+  /* each candle: off -> lights up softly -> burns -> all go out together at ~92-97 % */
+  @keyframes ffw-w11-on1 { 0%, 4%   { opacity: 0; } 6%,  92% { opacity: 1; } 97%, 100% { opacity: 0; } }
+  @keyframes ffw-w11-on2 { 0%, 27%  { opacity: 0; } 29%, 92% { opacity: 1; } 97%, 100% { opacity: 0; } }
+  @keyframes ffw-w11-on3 { 0%, 50%  { opacity: 0; } 52%, 92% { opacity: 1; } 97%, 100% { opacity: 0; } }
+  @keyframes ffw-w11-on4 { 0%, 73%  { opacity: 0; } 75%, 92% { opacity: 1; } 97%, 100% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    #ffw-w11 .fl { animation: none !important; opacity: 1; }
+  }
 </style>
 
 <svg id="ffw-w11" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 150" aria-hidden="true">
@@ -90,12 +99,12 @@
   <g stroke="#2b2b2b" stroke-width="1.6" stroke-linecap="round">
     <path d="M45 64V58M83 56V50M137 56V50M175 64V58"/>
   </g>
-  <!-- flames (shown by script) -->
-  <g class="flames" style="display:none">
-    <g class="fl f1" id="ffw-w11-a"><circle cx="45"  cy="50" r="11" fill="#ffd45a" opacity=".28"/><path d="M45 36C50 43 52 48 50 54C48 58 42 58 40 54C38 48 41 43 45 36Z" fill="#ff9a1f"/><path d="M45 43C47 47 48 50 47 53C46 55 44 55 43 53C42 50 43 47 45 43Z" fill="#fff3a8"/></g>
-    <g class="fl f2" id="ffw-w11-b"><circle cx="83"  cy="42" r="11" fill="#ffd45a" opacity=".28"/><path d="M83 28C88 35 90 40 88 46C86 50 80 50 78 46C76 40 79 35 83 28Z" fill="#ff9a1f"/><path d="M83 35C85 39 86 42 85 45C84 47 82 47 81 45C80 42 81 39 83 35Z" fill="#fff3a8"/></g>
-    <g class="fl f3" id="ffw-w11-c"><circle cx="137" cy="42" r="11" fill="#ffd45a" opacity=".28"/><path d="M137 28C142 35 144 40 142 46C140 50 134 50 132 46C130 40 133 35 137 28Z" fill="#ff9a1f"/><path d="M137 35C139 39 140 42 139 45C138 47 136 47 135 45C134 42 135 39 137 35Z" fill="#fff3a8"/></g>
-    <g class="fl f4" id="ffw-w11-d"><circle cx="175" cy="50" r="11" fill="#ffd45a" opacity=".28"/><path d="M175 36C180 43 182 48 180 54C178 58 172 58 170 54C168 48 171 43 175 36Z" fill="#ff9a1f"/><path d="M175 43C177 47 178 50 177 53C176 55 174 55 173 53C172 50 173 47 175 43Z" fill="#fff3a8"/></g>
+  <!-- flames: lit one after another by the CSS time-lapse -->
+  <g class="flames">
+    <g class="fl f1"><circle cx="45"  cy="50" r="11" fill="#ffd45a" opacity=".28"/><path d="M45 36C50 43 52 48 50 54C48 58 42 58 40 54C38 48 41 43 45 36Z" fill="#ff9a1f"/><path d="M45 43C47 47 48 50 47 53C46 55 44 55 43 53C42 50 43 47 45 43Z" fill="#fff3a8"/></g>
+    <g class="fl f2"><circle cx="83"  cy="42" r="11" fill="#ffd45a" opacity=".28"/><path d="M83 28C88 35 90 40 88 46C86 50 80 50 78 46C76 40 79 35 83 28Z" fill="#ff9a1f"/><path d="M83 35C85 39 86 42 85 45C84 47 82 47 81 45C80 42 81 39 83 35Z" fill="#fff3a8"/></g>
+    <g class="fl f3"><circle cx="137" cy="42" r="11" fill="#ffd45a" opacity=".28"/><path d="M137 28C142 35 144 40 142 46C140 50 134 50 132 46C130 40 133 35 137 28Z" fill="#ff9a1f"/><path d="M137 35C139 39 140 42 139 45C138 47 136 47 135 45C134 42 135 39 137 35Z" fill="#fff3a8"/></g>
+    <g class="fl f4"><circle cx="175" cy="50" r="11" fill="#ffd45a" opacity=".28"/><path d="M175 36C180 43 182 48 180 54C178 58 172 58 170 54C168 48 171 43 175 36Z" fill="#ff9a1f"/><path d="M175 43C177 47 178 50 177 53C176 55 174 55 173 53C172 50 173 47 175 43Z" fill="#fff3a8"/></g>
   </g>
   <!-- bow -->
   <g fill="#c8102e" stroke="#8e0b20" stroke-width="1.5" stroke-linejoin="round">
@@ -114,39 +123,3 @@
     <path d="M238 112L243 99L248 112Z" fill="#c8102e"/>
   </g>
 </svg>
-
-<script>
-(function () {
-  if (window.__ffwW11) return;
-  window.__ffwW11 = true;
-
-  var FORCE_LIT = null;   // null = use the date, or a number 0..4
-
-  function today() {
-    var m = /[?&]wdate=(\d{4})-(\d{2})-(\d{2})/.exec(location.search);
-    return m ? new Date(+m[1], +m[2] - 1, +m[3]) : new Date();
-  }
-
-  function litCandles(d) {
-    var y = d.getFullYear();
-    var d24 = new Date(y, 11, 24);
-    var fourth = new Date(y, 11, 24 - d24.getDay());   // Sunday on or before 24 Dec
-    var n = 0;
-    for (var i = 0; i < 4; i++) {
-      var sunday = new Date(fourth.getFullYear(), fourth.getMonth(), fourth.getDate() - 7 * (3 - i));
-      if (d >= sunday) n = i + 1;
-    }
-    return n;   // 0 before the 1st Advent, 4 from the 4th Advent on (and during the Christmas weeks)
-  }
-
-  var n = FORCE_LIT === null ? litCandles(today()) : FORCE_LIT;
-  var wrap = document.querySelector('#ffw-w11 .flames');
-  if (!wrap) return;
-  var ids = ['a', 'b', 'c', 'd'];
-  for (var i = 0; i < 4; i++) {
-    var f = document.getElementById('ffw-w11-' + ids[i]);
-    if (f) f.style.display = i < n ? '' : 'none';
-  }
-  wrap.style.display = '';
-})();
-</script>

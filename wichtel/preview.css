@@ -47,8 +47,9 @@ form { max-width: 560px; }
 .download-listing-element { padding: .6rem .8rem; border: 1px solid #ddd; margin-bottom: .6rem; border-radius: 3px; max-width: 560px; }
 .download-listing-element a { text-decoration: none; font-weight: 700; }
 
-footer { background: #f1f1ef; border-top: 4px solid #c8102e; margin-top: 3rem; padding: 2rem 0 4rem; }
+footer { background: #333; color: #fff; border-top: 4px solid #c8102e; margin-top: 3rem; padding: 2rem 0 4rem; }
+footer a { color: #fff; }
 .m-cols { display: flex; gap: 32px; flex-wrap: wrap; }
 .m-cols > div { flex: 1 1 220px; }
 .h4 { font-size: 1.1rem; margin-top: 0; }
-.m-legal { margin-top: 2rem; font-size: .8rem; color: #555; }
+.m-legal { margin-top: 2rem; font-size: .8rem; color: #ddd; }

@@ -3,16 +3,16 @@
 <header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
 <main><div class="container"><div class="section"><div class="content-padding">
 <div class="m-preview">Vorschau: <b>08-angebrannte-plaetzchen</b> &ndash; Nachbildung der Seite <code>/test</code></div>
-<h1>test</h1>
+<h1 class="main-heading page-heading">test</h1>
 <div class="html-snippet"><h1>Outlook Kalender</h1>
 <p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
-<h2>Test Formular</h2>
+<h2 class="title">Test Formular</h2>
 <form action="#">
 <p>Dies ist nur ein Test</p>
 <div class="field-wrapper"><label>Was?</label><input type="text"></div>
 <div class="field-wrapper"><label>Wo?</label><input type="text"></div>
 <div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
-<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+<div class="button-wrapper submit"><button class="form-button btn btn-red" type="button">Wasser marsch!</button></div>
 </form>
 <div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
 <div class="download-listing-container">
@@ -32,103 +32,64 @@
 <div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
 <div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
 </div>
-<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+<div class="footer-bottom"><p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#" class="btn-cookie-settings">Cookie-Einstellungen</a></p></div>
 </div></footer>
 <!--
   08 - Angebrannte Plaetzchen (burnt cookie + smoke) - Feuerwehr Wichtel
-  Tiny JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+  Pure CSS (no JavaScript), no text. Paste into <INJECT_HTML_HERE>.
 
-  A small burnt cookie sits next to the "cookie settings" link in the footer and
-  smoulders: little grey smoke puffs rise, wobble and fade.
-  The link is found by its href/text (contains "cookie"); if there is none, the cookie
-  sits at the bottom centre of the footer / the viewport.
+  A small burnt cookie sits right next to the "cookie settings" link in the footer and
+  smoulders: a column of little grey smoke puffs rises, sways and fades.
+  The cookie is the ::before of that link, the smoke its ::after.
+
+  Tuning: the selector "footer .btn-cookie-settings" = the link next to which the cookie sits.
+  Smoke height = height of the ::after rule.
 -->
 <style>
-  .ffw-w08 {
+  footer .btn-cookie-settings {
+    position: relative;
+    display: inline-block;
+  }
+  footer .btn-cookie-settings::before {
+    content: "";
     position: absolute;
+    left: calc(100% + 6px);
+    top: 50%;
     width: 24px;
     height: 24px;
+    margin-top: -12px;
     pointer-events: none;
+    background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10.5' fill='%236b4423' stroke='%232b1a0c' stroke-width='1.5'/><path d='M4 14c3 5 12 6 16 0c-1 6-6 9-10 8c-4-1-6-4-6-8z' fill='%232b1a0c' opacity='.55'/><circle cx='8' cy='9' r='1.9' fill='%231a1008'/><circle cx='15' cy='8' r='1.6' fill='%231a1008'/><circle cx='14' cy='14' r='2' fill='%231a1008'/><circle cx='8.5' cy='15' r='1.4' fill='%231a1008'/><path d='M17 3c2 2 3 4 3 6' stroke='%231a1008' stroke-width='1.2' fill='none' opacity='.5'/></svg>") center / 100% 100% no-repeat;
   }
-  .ffw-w08 svg { width: 24px; height: 24px; display: block; }
-  .ffw-w08 b {
+  footer .btn-cookie-settings::after {
+    content: "";
     position: absolute;
-    left: 50%;
-    bottom: 16px;
-    width: 14px;
-    height: 14px;
-    margin-left: -7px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(90,90,90,.65) 0, rgba(120,120,120,.35) 55%, rgba(150,150,150,0) 75%);
-    opacity: 0;
-    animation: ffw-w08-smoke 5s ease-out infinite;
+    left: calc(100% + 6px);
+    bottom: calc(50% + 10px);
+    width: 24px;
+    height: 84px;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle at 50% 50%, rgba(235,235,235,.75) 0, rgba(225,225,225,.55) 4px, rgba(210,210,210,.3) 7px, rgba(210,210,210,0) 10px),
+      radial-gradient(circle at 50% 50%, rgba(225,225,225,.65) 0, rgba(215,215,215,.4) 3px, rgba(200,200,200,0) 8px);
+    background-size: 24px 42px, 24px 58px;
+    background-repeat: repeat-y, repeat-y;
+    background-position: 0 0, -4px 0;
+    -webkit-mask-image: linear-gradient(to top, transparent 0, #000 25%, #000 45%, transparent 100%);
+    mask-image: linear-gradient(to top, transparent 0, #000 25%, #000 45%, transparent 100%);
+    animation:
+      ffw-w08-rise 5s linear infinite,
+      ffw-w08-sway 3.5s ease-in-out infinite alternate;
   }
-  .ffw-w08 b:nth-of-type(2) { animation-delay: 1s;   margin-left: -10px; }
-  .ffw-w08 b:nth-of-type(3) { animation-delay: 2s;   margin-left: -4px; }
-  .ffw-w08 b:nth-of-type(4) { animation-delay: 3s;   margin-left: -9px; }
-  .ffw-w08 b:nth-of-type(5) { animation-delay: 4s;   margin-left: -6px; }
-  @keyframes ffw-w08-smoke {
-    0%   { transform: translate(0, 0) scale(.5); opacity: 0; }
-    15%  { opacity: .85; }
-    50%  { transform: translate(6px, -34px) scale(1.4); }
-    100% { transform: translate(-5px, -78px) scale(2.6); opacity: 0; }
+  @keyframes ffw-w08-rise {
+    from { background-position: 0 0,    -4px 0; }
+    to   { background-position: 0 -42px, -4px -58px; }
+  }
+  @keyframes ffw-w08-sway {
+    from { transform: translateX(-3px); }
+    to   { transform: translateX(4px); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .ffw-w08 b { animation: none; opacity: 0; }
+    footer .btn-cookie-settings::after { animation: none; display: none; }
   }
 </style>
-
-<script>
-(function () {
-  if (window.__ffwW08) return;
-  window.__ffwW08 = true;
-
-  var COOKIE = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="#6b4423" stroke="#2b1a0c" stroke-width="1.5"/>' +
-    '<path d="M4 14c3 5 12 6 16 0c-1 6-6 9-10 8c-4-1-6-4-6-8z" fill="#2b1a0c" opacity=".55"/>' +
-    '<circle cx="8" cy="9" r="1.9" fill="#1a1008"/><circle cx="15" cy="8" r="1.6" fill="#1a1008"/>' +
-    '<circle cx="14" cy="14" r="2" fill="#1a1008"/><circle cx="8.5" cy="15" r="1.4" fill="#1a1008"/>' +
-    '<path d="M17 3c2 2 3 4 3 6" stroke="#1a1008" stroke-width="1.2" fill="none" opacity=".5"/></svg>';
-
-  var n = document.createElement('div');
-  n.className = 'ffw-w08';
-  n.setAttribute('aria-hidden', 'true');
-  n.style.zIndex = '2147483000';
-  n.innerHTML = COOKIE + '<b></b><b></b><b></b><b></b><b></b>';
-  document.documentElement.appendChild(n);
-
-  function findLink() {
-    var links = document.querySelectorAll('footer a, a');
-    for (var i = 0; i < links.length; i++) {
-      var a = links[i];
-      if (/cookie/i.test(a.getAttribute('href') || '') || /cookie/i.test(a.textContent || '')) return a;
-    }
-    return null;
-  }
-
-  function layout() {
-    var a = findLink();
-    var r = a ? a.getBoundingClientRect() : null;
-    if (r && r.width > 0) {
-      n.style.position = 'absolute';
-      n.style.left = (r.left + window.pageXOffset - 30) + 'px';
-      n.style.top = (r.top + window.pageYOffset + r.height / 2 - 12) + 'px';
-      return;
-    }
-    var f = document.querySelector('footer');
-    var fr = f ? f.getBoundingClientRect() : null;
-    if (fr && fr.width > 0) {
-      n.style.position = 'absolute';
-      n.style.left = (fr.left + window.pageXOffset + fr.width / 2) + 'px';
-      n.style.top = (fr.bottom + window.pageYOffset - 40) + 'px';
-    } else {
-      n.style.position = 'fixed';
-      n.style.left = '50vw';
-      n.style.top = 'calc(100vh - 50px)';
-    }
-  }
-
-  function init() { layout(); setTimeout(layout, 600); }
-  if (document.readyState === 'complete') init(); else window.addEventListener('load', init);
-  window.addEventListener('resize', layout);
-})();
-</script>
