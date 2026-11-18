@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 22-blaulicht</title><link rel="stylesheet" href="preview.css"></head><body>
+<header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
+<main><div class="container"><div class="section"><div class="content-padding">
+<div class="m-preview">Vorschau: <b>22-blaulicht</b> &ndash; Nachbildung der Seite <code>/test</code></div>
+<h1>test</h1>
+<div class="html-snippet"><h1>Outlook Kalender</h1>
+<p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
+<h2>Test Formular</h2>
+<form action="#">
+<p>Dies ist nur ein Test</p>
+<div class="field-wrapper"><label>Was?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wo?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
+<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+</form>
+<div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
+<div class="download-listing-container">
+<div class="download-listing-element"><a href="#">Anleitung Android - 413,9 KB - PDF</a></div>
+<div class="download-listing-element"><a href="#">Anleitung iOS - 508,2 KB - PDF</a></div>
+</div>
+<h2>Aktuelles aus unserer Feuerwehr</h2>
+<h3>Leistungsprüfung Wasser mit Kameradschaftsabend</h3>
+<p>Dieses Jahr konnten wir mit zwei Gruppen zur Leistungsprüfung antreten, darunter erstmalig zwei Mitglieder unserer Jugendfeuerwehr.</p>
+<h3>Person mittels Drehleiter aus Wohnung gerettet</h3>
+<p>Am heutigen Einsatz wurden wir gemeinsam mit der Drehleiter aus Neuburg zu einer Personenrettung alarmiert.</p>
+<h3>Stammtisch im Dezember</h3>
+<p>Alle Vereinsmitglieder und Feuerwehrinteressierte sind eingeladen.</p>
+</div></div></div></main>
+<footer><div class="container"><div class="m-cols">
+<div><h2 class="h4">Unser Leitsatz</h2><p>Retten - Löschen - Bergen - Schützen</p></div>
+<div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
+<div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
+</div>
+<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+</div></footer>
+<!--
+  22 - Blaulicht (soft blue light on the screen edges) - Feuerwehr Wichtel
+  Pure CSS, no JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+
+  Soft, slow blue light washes in from the left and right screen edge, alternately, like
+  the reflection of a Blaulicht on a house wall: two slow pulses per side, then a long
+  pause (24 s cycle). Each pulse takes 4 seconds (0.25 Hz) - no flashing, no strobing,
+  nothing that could be mistaken for a real alarm or trigger photosensitivity.
+
+  Tuning: --blue (colour), --reach (how far the light reaches in), --peak (max. opacity).
+-->
+<style>
+  #ffw-w22 {
+    --blue: 31, 111, 255;
+    --reach: 16vw;
+    --peak: .55;
+    position: fixed;
+    inset: 0;
+    z-index: 2147483000;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  #ffw-w22 i {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: var(--reach);
+    opacity: 0;
+  }
+  #ffw-w22 .l {
+    left: 0;
+    background: linear-gradient(90deg, rgba(var(--blue), .75) 0%, rgba(var(--blue), .25) 45%, rgba(var(--blue), 0) 100%);
+    animation: ffw-w22-left 24s ease-in-out infinite;
+  }
+  #ffw-w22 .r {
+    right: 0;
+    background: linear-gradient(270deg, rgba(var(--blue), .75) 0%, rgba(var(--blue), .25) 45%, rgba(var(--blue), 0) 100%);
+    animation: ffw-w22-right 24s ease-in-out infinite;
+  }
+  @keyframes ffw-w22-left {
+    0%     { opacity: 0; }
+    8.3%   { opacity: var(--peak); }
+    16.7%  { opacity: 0; }
+    33.3%  { opacity: 0; }
+    41.7%  { opacity: var(--peak); }
+    50%    { opacity: 0; }
+    100%   { opacity: 0; }
+  }
+  @keyframes ffw-w22-right {
+    0%     { opacity: 0; }
+    16.7%  { opacity: 0; }
+    25%    { opacity: var(--peak); }
+    33.3%  { opacity: 0; }
+    50%    { opacity: 0; }
+    58.3%  { opacity: var(--peak); }
+    66.7%  { opacity: 0; }
+    100%   { opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #ffw-w22 { display: none; }
+  }
+</style>
+
+<div id="ffw-w22" aria-hidden="true"><i class="l"></i><i class="r"></i></div>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 10-kreidetafel</title><link rel="stylesheet" href="preview.css"></head><body>
+<header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
+<main><div class="container"><div class="section"><div class="content-padding">
+<div class="m-preview">Vorschau: <b>10-kreidetafel</b> &ndash; Nachbildung der Seite <code>/test</code></div>
+<h1>test</h1>
+<div class="html-snippet"><h1>Outlook Kalender</h1>
+<p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
+<h2>Test Formular</h2>
+<form action="#">
+<p>Dies ist nur ein Test</p>
+<div class="field-wrapper"><label>Was?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wo?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
+<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+</form>
+<div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
+<div class="download-listing-container">
+<div class="download-listing-element"><a href="#">Anleitung Android - 413,9 KB - PDF</a></div>
+<div class="download-listing-element"><a href="#">Anleitung iOS - 508,2 KB - PDF</a></div>
+</div>
+<h2>Aktuelles aus unserer Feuerwehr</h2>
+<h3>Leistungsprüfung Wasser mit Kameradschaftsabend</h3>
+<p>Dieses Jahr konnten wir mit zwei Gruppen zur Leistungsprüfung antreten, darunter erstmalig zwei Mitglieder unserer Jugendfeuerwehr.</p>
+<h3>Person mittels Drehleiter aus Wohnung gerettet</h3>
+<p>Am heutigen Einsatz wurden wir gemeinsam mit der Drehleiter aus Neuburg zu einer Personenrettung alarmiert.</p>
+<h3>Stammtisch im Dezember</h3>
+<p>Alle Vereinsmitglieder und Feuerwehrinteressierte sind eingeladen.</p>
+</div></div></div></main>
+<footer><div class="container"><div class="m-cols">
+<div><h2 class="h4">Unser Leitsatz</h2><p>Retten - Löschen - Bergen - Schützen</p></div>
+<div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
+<div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
+</div>
+<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+</div></footer>
+<!--
+  10 - Kreidetafel (chalk board with doodles) - Feuerwehr Wichtel
+  Pure CSS/SVG, no JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+
+  A small slate board in a blue-white Bavarian "Rauten" frame. Chalk doodles are drawn one
+  after another - heart, star, flame, water drop, Brezn - then everything fades away and
+  starts over (30 s loop). No letters, only pictures.
+
+  Tuning: --x / --y / --w in #ffw-w10.
+-->
+<style>
+  #ffw-w10 {
+    --x: 2vw;               /* distance from the left viewport edge */
+    --y: 58vh;              /* distance from the top */
+    --w: 190px;
+    position: fixed;
+    left: var(--x);
+    top: var(--y);
+    width: var(--w);
+    padding: 8px;
+    z-index: 2147483000;
+    pointer-events: none;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Crect width='16' height='16' fill='%23fff'/%3E%3Cpath d='M8 0L16 8L8 16L0 8z' fill='%230098d4'/%3E%3C/svg%3E");
+    border-radius: 3px;
+    box-shadow: 1px 3px 6px rgba(0,0,0,.35);
+    transform: rotate(-2deg);
+    box-sizing: border-box;
+  }
+  #ffw-w10 svg { display: block; width: 100%; height: auto; background: #23323e; border-radius: 2px; }
+  #ffw-w10 .ch {
+    fill: none;
+    stroke: #f4f1e8;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: ffw-w10-draw 30s ease-in-out infinite;
+  }
+  #ffw-w10 .c2 { animation-delay: 1.8s; }
+  #ffw-w10 .c3 { animation-delay: 3.6s; }
+  #ffw-w10 .c4 { animation-delay: 5.4s; }
+  #ffw-w10 .c5 { animation-delay: 7.2s; }
+  @keyframes ffw-w10-draw {
+    0%   { stroke-dashoffset: 1; opacity: 1; }
+    5%   { stroke-dashoffset: 0; opacity: 1; }
+    80%  { stroke-dashoffset: 0; opacity: 1; }
+    92%  { stroke-dashoffset: 0; opacity: 0; }
+    100% { stroke-dashoffset: 1; opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #ffw-w10 .ch { animation: none; stroke-dashoffset: 0; }
+  }
+  @media (max-width: 800px) { #ffw-w10 { display: none; } }
+</style>
+
+<div id="ffw-w10" aria-hidden="true">
+  <svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
+    <!-- heart -->
+    <path class="ch c1" pathLength="1" d="M30 42C8 28 14 10 28 14C30 15 30 17 30 18C30 17 31 15 33 14C47 10 52 28 30 42Z"/>
+    <!-- star -->
+    <path class="ch c2" pathLength="1" d="M85 14L89.1 24.3L100.2 25.1L91.7 32.2L94.4 42.9L85 37L75.6 42.9L78.3 32.2L69.8 25.1L80.9 24.3Z"/>
+    <!-- flame -->
+    <path class="ch c3" pathLength="1" d="M135 46C122 46 118 34 124 26C126 30 129 31 130 28C129 20 134 14 138 10C138 20 148 24 148 34C148 41 143 46 135 46Z"/>
+    <!-- water drop -->
+    <path class="ch c4" pathLength="1" d="M30 62C30 62 18 76 18 82A12 12 0 0 0 42 82C42 76 30 62 30 62Z"/>
+    <!-- Brezn -->
+    <path class="ch c5" pathLength="1" d="M68 90C60 78 70 64 85 64C100 64 110 78 102 90M68 90L102 70M102 90L68 70"/>
+    <!-- Rauten doodle -->
+    <path class="ch c5" pathLength="1" d="M135 62L147 76L135 90L123 76Z"/>
+  </svg>
+</div>

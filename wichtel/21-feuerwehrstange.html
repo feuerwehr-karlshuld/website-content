@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 21-feuerwehrstange</title><link rel="stylesheet" href="preview.css"></head><body>
+<header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
+<main><div class="container"><div class="section"><div class="content-padding">
+<div class="m-preview">Vorschau: <b>21-feuerwehrstange</b> &ndash; Nachbildung der Seite <code>/test</code></div>
+<h1>test</h1>
+<div class="html-snippet"><h1>Outlook Kalender</h1>
+<p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
+<h2>Test Formular</h2>
+<form action="#">
+<p>Dies ist nur ein Test</p>
+<div class="field-wrapper"><label>Was?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wo?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
+<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+</form>
+<div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
+<div class="download-listing-container">
+<div class="download-listing-element"><a href="#">Anleitung Android - 413,9 KB - PDF</a></div>
+<div class="download-listing-element"><a href="#">Anleitung iOS - 508,2 KB - PDF</a></div>
+</div>
+<h2>Aktuelles aus unserer Feuerwehr</h2>
+<h3>Leistungsprüfung Wasser mit Kameradschaftsabend</h3>
+<p>Dieses Jahr konnten wir mit zwei Gruppen zur Leistungsprüfung antreten, darunter erstmalig zwei Mitglieder unserer Jugendfeuerwehr.</p>
+<h3>Person mittels Drehleiter aus Wohnung gerettet</h3>
+<p>Am heutigen Einsatz wurden wir gemeinsam mit der Drehleiter aus Neuburg zu einer Personenrettung alarmiert.</p>
+<h3>Stammtisch im Dezember</h3>
+<p>Alle Vereinsmitglieder und Feuerwehrinteressierte sind eingeladen.</p>
+</div></div></div></main>
+<footer><div class="container"><div class="m-cols">
+<div><h2 class="h4">Unser Leitsatz</h2><p>Retten - Löschen - Bergen - Schützen</p></div>
+<div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
+<div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
+</div>
+<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+</div></footer>
+<!--
+  21 - Feuerwehrstange (fire pole) - Feuerwehr Wichtel
+  Pure CSS, no JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+
+  A shiny steel fire pole runs along the left edge of the screen. Every ~16 seconds
+  something whooshes down it - a bright streak with speed lines and a little puff of dust
+  on landing. Nobody is seen. Hidden on narrow (mobile) screens.
+
+  Tuning: --x (distance from the left edge) in #ffw-w21; animation duration for the rhythm.
+-->
+<style>
+  #ffw-w21 {
+    --x: 20px;
+    position: fixed;
+    left: var(--x);
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    z-index: 2147483000;
+    pointer-events: none;
+  }
+  #ffw-w21 .pole {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #5c6368 0%, #aeb5ba 22%, #f2f5f7 45%, #9aa1a7 70%, #50575c 100%);
+    box-shadow: 1px 0 3px rgba(0,0,0,.35);
+  }
+  /* the slide: streak + speed lines */
+  #ffw-w21 .slide {
+    position: absolute;
+    left: -9px;
+    width: 26px;
+    height: 160px;
+    top: -170px;
+    opacity: 0;
+    animation: ffw-w21-down 16s cubic-bezier(.5, 0, 1, .6) infinite;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.95) 85%, rgba(255,255,255,0) 100%) 9px 0 / 8px 100% no-repeat,
+      repeating-linear-gradient(180deg, rgba(120,170,220,.0) 0 10px, rgba(120,170,220,.55) 10px 22px) 0 0 / 3px 100% no-repeat,
+      repeating-linear-gradient(180deg, rgba(120,170,220,.55) 0 12px, rgba(120,170,220,0) 12px 24px) 23px 0 / 3px 100% no-repeat;
+    -webkit-mask-image: linear-gradient(180deg, transparent, #000 40%, #000 80%, transparent);
+            mask-image: linear-gradient(180deg, transparent, #000 40%, #000 80%, transparent);
+  }
+  @keyframes ffw-w21-down {
+    0%     { transform: translateY(0);                        opacity: 0; }
+    1%     { opacity: 1; }
+    6.5%   { transform: translateY(calc(100vh + 170px));      opacity: 1; }
+    7%     { transform: translateY(calc(100vh + 170px));      opacity: 0; }
+    100%   { transform: translateY(calc(100vh + 170px));      opacity: 0; }
+  }
+  /* dust at the bottom */
+  #ffw-w21 .dust {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 46px;
+    height: 20px;
+    margin-left: -23px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(190,190,185,.85) 0, rgba(190,190,185,.4) 55%, rgba(190,190,185,0) 75%);
+    opacity: 0;
+    animation: ffw-w21-dust 16s ease-out infinite;
+  }
+  @keyframes ffw-w21-dust {
+    0%, 6%  { transform: scale(.2); opacity: 0; }
+    8%      { transform: scale(.8); opacity: .9; }
+    16%     { transform: scale(2.2, 1.8) translateY(-6px); opacity: 0; }
+    100%    { transform: scale(2.2, 1.8); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #ffw-w21 .slide, #ffw-w21 .dust { animation: none; opacity: 0; }
+  }
+  @media (max-width: 700px) { #ffw-w21 { display: none; } }
+</style>
+
+<div id="ffw-w21" aria-hidden="true">
+  <div class="pole"></div>
+  <div class="slide"></div>
+  <div class="dust"></div>
+</div>

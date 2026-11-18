@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 23-staubwolke</title><link rel="stylesheet" href="preview.css"></head><body>
+<header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
+<main><div class="container"><div class="section"><div class="content-padding">
+<div class="m-preview">Vorschau: <b>23-staubwolke</b> &ndash; Nachbildung der Seite <code>/test</code></div>
+<h1>test</h1>
+<div class="html-snippet"><h1>Outlook Kalender</h1>
+<p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
+<h2>Test Formular</h2>
+<form action="#">
+<p>Dies ist nur ein Test</p>
+<div class="field-wrapper"><label>Was?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wo?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
+<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+</form>
+<div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
+<div class="download-listing-container">
+<div class="download-listing-element"><a href="#">Anleitung Android - 413,9 KB - PDF</a></div>
+<div class="download-listing-element"><a href="#">Anleitung iOS - 508,2 KB - PDF</a></div>
+</div>
+<h2>Aktuelles aus unserer Feuerwehr</h2>
+<h3>Leistungsprüfung Wasser mit Kameradschaftsabend</h3>
+<p>Dieses Jahr konnten wir mit zwei Gruppen zur Leistungsprüfung antreten, darunter erstmalig zwei Mitglieder unserer Jugendfeuerwehr.</p>
+<h3>Person mittels Drehleiter aus Wohnung gerettet</h3>
+<p>Am heutigen Einsatz wurden wir gemeinsam mit der Drehleiter aus Neuburg zu einer Personenrettung alarmiert.</p>
+<h3>Stammtisch im Dezember</h3>
+<p>Alle Vereinsmitglieder und Feuerwehrinteressierte sind eingeladen.</p>
+</div></div></div></main>
+<footer><div class="container"><div class="m-cols">
+<div><h2 class="h4">Unser Leitsatz</h2><p>Retten - Löschen - Bergen - Schützen</p></div>
+<div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
+<div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
+</div>
+<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+</div></footer>
+<!--
+  23 - Staubwolke (cartoon scuffle cloud) - Feuerwehr Wichtel
+  Pure CSS/SVG, no JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+
+  Like in a comic: a round cloud of dust pops up out of nowhere, shakes a bit, with little
+  stars and swirls flying out of it - then it poofs away. Three clouds at three places on the
+  screen take turns (36 s cycle, each visible for about 4 s). Whoever was fighting in there is
+  never seen.
+
+  Tuning: the three <div class="c"> have --x / --y (position) and --d (start delay).
+-->
+<style>
+  #ffw-w23 {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483000;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  #ffw-w23 .c {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: 110px;
+    height: 82px;
+    margin: -41px 0 0 -55px;
+    opacity: 0;
+    animation: ffw-w23-pop 36s ease-out infinite;
+    animation-delay: var(--d);
+  }
+  #ffw-w23 .c svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+    animation: ffw-w23-shake .3s ease-in-out infinite alternate;
+    filter: drop-shadow(1px 2px 2px rgba(0,0,0,.25));
+  }
+  @keyframes ffw-w23-pop {
+    0%    { transform: scale(.2); opacity: 0; }
+    1.5%  { transform: scale(1.15); opacity: 1; }
+    2.5%  { transform: scale(1);   opacity: 1; }
+    9.5%  { transform: scale(1);   opacity: 1; }
+    11.5% { transform: scale(1.35); opacity: 0; }
+    100%  { transform: scale(1.35); opacity: 0; }
+  }
+  @keyframes ffw-w23-shake {
+    from { transform: translate(-2px, 1px) rotate(-2deg); }
+    to   { transform: translate(2px, -1px) rotate(2deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #ffw-w23 .c, #ffw-w23 .c svg { animation: none; }
+    #ffw-w23 .c { opacity: 0; }
+  }
+</style>
+
+<div id="ffw-w23" aria-hidden="true">
+  <div class="c" style="--x:18vw; --y:62vh; --d:0s">
+    <svg viewBox="0 0 110 82" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#f4f4f1" stroke="#b5b5b0" stroke-width="2">
+        <circle cx="30" cy="48" r="20"/><circle cx="55" cy="34" r="24"/><circle cx="82" cy="48" r="20"/>
+        <circle cx="42" cy="62" r="17"/><circle cx="70" cy="62" r="17"/>
+      </g>
+      <g fill="#f4f4f1"><circle cx="30" cy="48" r="17.5"/><circle cx="55" cy="34" r="21.5"/><circle cx="82" cy="48" r="17.5"/><circle cx="42" cy="62" r="14.5"/><circle cx="70" cy="62" r="14.5"/></g>
+      <g fill="#f5c542" stroke="#b8860b" stroke-width="1">
+        <path d="M14 14l2.2 5 5.4.5-4.1 3.6 1.3 5.3-4.8-2.9-4.8 2.9 1.3-5.3-4.1-3.6 5.4-.5z"/>
+        <path d="M96 10l1.8 4 4.4.4-3.3 2.9 1 4.3-3.9-2.3-3.9 2.3 1-4.3-3.3-2.9 4.4-.4z"/>
+        <path d="M58 4l1.6 3.6 3.9.4-2.9 2.6.9 3.8-3.5-2-3.5 2 .9-3.8-2.9-2.6 3.9-.4z"/>
+      </g>
+      <g fill="none" stroke="#9a9a95" stroke-width="2" stroke-linecap="round">
+        <path d="M44 44c5-8 14-8 16-2s-6 9-9 5"/><path d="M68 56c4-5 11-4 12 0"/>
+      </g>
+    </svg>
+  </div>
+  <div class="c" style="--x:72vw; --y:34vh; --d:12s">
+    <svg viewBox="0 0 110 82" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#f4f4f1" stroke="#b5b5b0" stroke-width="2">
+        <circle cx="28" cy="50" r="19"/><circle cx="52" cy="36" r="25"/><circle cx="80" cy="46" r="21"/>
+        <circle cx="40" cy="64" r="16"/><circle cx="68" cy="64" r="18"/>
+      </g>
+      <g fill="#f4f4f1"><circle cx="28" cy="50" r="16.5"/><circle cx="52" cy="36" r="22.5"/><circle cx="80" cy="46" r="18.5"/><circle cx="40" cy="64" r="13.5"/><circle cx="68" cy="64" r="15.5"/></g>
+      <g fill="#f5c542" stroke="#b8860b" stroke-width="1">
+        <path d="M100 30l2.2 5 5.4.5-4.1 3.6 1.3 5.3-4.8-2.9-4.8 2.9 1.3-5.3-4.1-3.6 5.4-.5z"/>
+        <path d="M8 24l1.8 4 4.4.4-3.3 2.9 1 4.3-3.9-2.3-3.9 2.3 1-4.3-3.3-2.9 4.4-.4z"/>
+      </g>
+      <g fill="none" stroke="#9a9a95" stroke-width="2" stroke-linecap="round">
+        <path d="M40 40c6-9 16-8 17-1s-7 10-11 6"/><path d="M72 58c4-5 11-4 12 0"/>
+      </g>
+    </svg>
+  </div>
+  <div class="c" style="--x:46vw; --y:80vh; --d:24s">
+    <svg viewBox="0 0 110 82" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#f4f4f1" stroke="#b5b5b0" stroke-width="2">
+        <circle cx="32" cy="46" r="18"/><circle cx="56" cy="32" r="23"/><circle cx="80" cy="48" r="19"/>
+        <circle cx="44" cy="60" r="18"/><circle cx="68" cy="62" r="16"/>
+      </g>
+      <g fill="#f4f4f1"><circle cx="32" cy="46" r="15.5"/><circle cx="56" cy="32" r="20.5"/><circle cx="80" cy="48" r="16.5"/><circle cx="44" cy="60" r="15.5"/><circle cx="68" cy="62" r="13.5"/></g>
+      <g fill="#f5c542" stroke="#b8860b" stroke-width="1">
+        <path d="M18 8l2.2 5 5.4.5-4.1 3.6 1.3 5.3-4.8-2.9-4.8 2.9 1.3-5.3-4.1-3.6 5.4-.5z"/>
+        <path d="M94 16l1.8 4 4.4.4-3.3 2.9 1 4.3-3.9-2.3-3.9 2.3 1-4.3-3.3-2.9 4.4-.4z"/>
+      </g>
+      <g fill="none" stroke="#9a9a95" stroke-width="2" stroke-linecap="round">
+        <path d="M46 40c5-8 15-8 16-2s-6 9-10 5"/><path d="M66 56c4-5 11-4 12 0"/>
+      </g>
+    </svg>
+  </div>
+</div>

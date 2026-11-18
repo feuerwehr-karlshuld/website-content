@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 24-lichterkette</title><link rel="stylesheet" href="preview.css"></head><body>
+<header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
+<main><div class="container"><div class="section"><div class="content-padding">
+<div class="m-preview">Vorschau: <b>24-lichterkette</b> &ndash; Nachbildung der Seite <code>/test</code></div>
+<h1>test</h1>
+<div class="html-snippet"><h1>Outlook Kalender</h1>
+<p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
+<h2>Test Formular</h2>
+<form action="#">
+<p>Dies ist nur ein Test</p>
+<div class="field-wrapper"><label>Was?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wo?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
+<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+</form>
+<div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
+<div class="download-listing-container">
+<div class="download-listing-element"><a href="#">Anleitung Android - 413,9 KB - PDF</a></div>
+<div class="download-listing-element"><a href="#">Anleitung iOS - 508,2 KB - PDF</a></div>
+</div>
+<h2>Aktuelles aus unserer Feuerwehr</h2>
+<h3>Leistungsprüfung Wasser mit Kameradschaftsabend</h3>
+<p>Dieses Jahr konnten wir mit zwei Gruppen zur Leistungsprüfung antreten, darunter erstmalig zwei Mitglieder unserer Jugendfeuerwehr.</p>
+<h3>Person mittels Drehleiter aus Wohnung gerettet</h3>
+<p>Am heutigen Einsatz wurden wir gemeinsam mit der Drehleiter aus Neuburg zu einer Personenrettung alarmiert.</p>
+<h3>Stammtisch im Dezember</h3>
+<p>Alle Vereinsmitglieder und Feuerwehrinteressierte sind eingeladen.</p>
+</div></div></div></main>
+<footer><div class="container"><div class="m-cols">
+<div><h2 class="h4">Unser Leitsatz</h2><p>Retten - Löschen - Bergen - Schützen</p></div>
+<div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
+<div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
+</div>
+<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+</div></footer>
+<!--
+  24 - Lichterkette (string of lights with one flaky bulb) - Feuerwehr Wichtel
+  Pure CSS, no JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+
+  A string of Christmas lights is draped along the top edge of the screen in loops. The
+  bulbs (red, yellow, Bavarian blue, warm white) twinkle slowly. One bulb has a loose
+  contact and flickers on and off irregularly - a short-circuit nobody is going to fix.
+  The flicker is slow (never faster than 2 changes per second).
+
+  Tuning: change the colours in "--c" per nth-child, or delete / add <i> elements.
+-->
+<style>
+  #ffw-w24 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 52px;
+    z-index: 2147483000;
+    pointer-events: none;
+    display: flex;
+    overflow: hidden;
+  }
+  #ffw-w24 i {
+    position: relative;
+    flex: 0 0 110px;
+    height: 28px;
+    margin-top: -2px;
+    border-bottom: 2px solid #2b2b2b;
+    border-radius: 0 0 55px 55px / 0 0 22px 22px;
+    --c: #e30613;
+    --dl: 0s;
+  }
+  #ffw-w24 i:nth-child(4n+2) { --c: #ffd23f; }
+  #ffw-w24 i:nth-child(4n+3) { --c: #1fa3e6; }
+  #ffw-w24 i:nth-child(4n)   { --c: #fff0c2; }
+  #ffw-w24 i:nth-child(3n+1) { --dl: -1.3s; }
+  #ffw-w24 i:nth-child(3n+2) { --dl: -2.6s; }
+  /* bulb */
+  #ffw-w24 i::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -19px;
+    width: 10px;
+    height: 15px;
+    margin-left: -5px;
+    border-radius: 50% 50% 46% 46% / 60% 60% 40% 40%;
+    background: var(--c);
+    box-shadow: 0 0 10px 3px var(--c);
+    animation: ffw-w24-twinkle 4.8s ease-in-out infinite;
+    animation-delay: var(--dl);
+  }
+  /* socket */
+  #ffw-w24 i::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    width: 6px;
+    height: 5px;
+    margin-left: -3px;
+    background: #444;
+    border-radius: 1px;
+  }
+  @keyframes ffw-w24-twinkle {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: .55; }
+  }
+  /* the flaky bulb: irregular, but slow (>= 0.5 s between changes) */
+  #ffw-w24 i:nth-child(6)::after,
+  #ffw-w24 i:nth-child(15)::after {
+    animation: ffw-w24-flaky 9s linear infinite;
+  }
+  #ffw-w24 i:nth-child(15)::after { animation-duration: 13s; animation-delay: -4s; }
+  @keyframes ffw-w24-flaky {
+    0%, 30%  { opacity: 1; }
+    36%      { opacity: .1; }
+    42%      { opacity: .1; }
+    48%      { opacity: 1; }
+    60%      { opacity: 1; }
+    66%      { opacity: .1; }
+    78%      { opacity: .1; }
+    84%      { opacity: 1; }
+    100%     { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #ffw-w24 i::after { animation: none !important; }
+  }
+</style>
+
+<div id="ffw-w24" aria-hidden="true">
+  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+  <i></i><i></i><i></i><i></i>
+</div>

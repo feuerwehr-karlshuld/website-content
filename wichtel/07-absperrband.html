@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 07-absperrband</title><link rel="stylesheet" href="preview.css"></head><body>
+<header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
+<main><div class="container"><div class="section"><div class="content-padding">
+<div class="m-preview">Vorschau: <b>07-absperrband</b> &ndash; Nachbildung der Seite <code>/test</code></div>
+<h1>test</h1>
+<div class="html-snippet"><h1>Outlook Kalender</h1>
+<p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
+<h2>Test Formular</h2>
+<form action="#">
+<p>Dies ist nur ein Test</p>
+<div class="field-wrapper"><label>Was?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wo?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
+<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+</form>
+<div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
+<div class="download-listing-container">
+<div class="download-listing-element"><a href="#">Anleitung Android - 413,9 KB - PDF</a></div>
+<div class="download-listing-element"><a href="#">Anleitung iOS - 508,2 KB - PDF</a></div>
+</div>
+<h2>Aktuelles aus unserer Feuerwehr</h2>
+<h3>Leistungsprüfung Wasser mit Kameradschaftsabend</h3>
+<p>Dieses Jahr konnten wir mit zwei Gruppen zur Leistungsprüfung antreten, darunter erstmalig zwei Mitglieder unserer Jugendfeuerwehr.</p>
+<h3>Person mittels Drehleiter aus Wohnung gerettet</h3>
+<p>Am heutigen Einsatz wurden wir gemeinsam mit der Drehleiter aus Neuburg zu einer Personenrettung alarmiert.</p>
+<h3>Stammtisch im Dezember</h3>
+<p>Alle Vereinsmitglieder und Feuerwehrinteressierte sind eingeladen.</p>
+</div></div></div></main>
+<footer><div class="container"><div class="m-cols">
+<div><h2 class="h4">Unser Leitsatz</h2><p>Retten - Löschen - Bergen - Schützen</p></div>
+<div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
+<div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
+</div>
+<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+</div></footer>
+<!--
+  07 - Absperrband (red-white barrier tape) - Feuerwehr Wichtel
+  Tiny JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+
+  Two strips of red-white Absperrband are stretched, slightly crooked and gently swaying,
+  across the top and bottom of a content block - as if the imp has cordoned it off.
+  Clicks go straight through the tape.
+
+  Tuning: TARGET = block that gets cordoned off (first match is used).
+-->
+<style>
+  .ffw-w07 {
+    position: absolute;
+    height: 15px;
+    pointer-events: none;
+    background: repeating-linear-gradient(-45deg, #e30613 0 14px, #fff 14px 28px);
+    box-shadow: 0 2px 3px rgba(0,0,0,.35);
+    border-radius: 1px;
+    transform-origin: 0 50%;
+    animation: ffw-w07-sway 6s ease-in-out infinite alternate;
+  }
+  .ffw-w07.b { animation-duration: 7.5s; animation-direction: alternate-reverse; }
+  @keyframes ffw-w07-sway {
+    from { transform: rotate(calc(var(--a) - .35deg)); }
+    to   { transform: rotate(calc(var(--a) + .35deg)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ffw-w07 { animation: none; transform: rotate(var(--a)); }
+  }
+</style>
+
+<script>
+(function () {
+  if (window.__ffwW07) return;
+  window.__ffwW07 = true;
+
+  var TARGET = '.download-listing-container, main .html-snippet, main .content-padding';
+
+  var layer = document.createElement('div');
+  layer.setAttribute('aria-hidden', 'true');
+  layer.style.cssText = 'position:absolute;left:0;top:0;width:0;height:0;overflow:visible;pointer-events:none;z-index:2147483000';
+  document.documentElement.appendChild(layer);
+
+  var top = document.createElement('div');
+  top.className = 'ffw-w07 a';
+  top.style.setProperty('--a', '-1.4deg');
+  var bottom = document.createElement('div');
+  bottom.className = 'ffw-w07 b';
+  bottom.style.setProperty('--a', '1.1deg');
+  layer.appendChild(top);
+  layer.appendChild(bottom);
+
+  function layout() {
+    var t = document.querySelector(TARGET);
+    var r = t ? t.getBoundingClientRect() : null;
+    if (!r || r.width === 0) { layer.style.display = 'none'; return; }
+    layer.style.display = '';
+    var x = r.left + window.pageXOffset - 14;
+    var w = r.width + 28;
+    top.style.left = x + 'px';
+    top.style.width = w + 'px';
+    top.style.top = (r.top + window.pageYOffset - 6) + 'px';
+    bottom.style.left = x + 'px';
+    bottom.style.width = w + 'px';
+    bottom.style.top = (r.bottom + window.pageYOffset - 8) + 'px';
+  }
+
+  function init() { layout(); setTimeout(layout, 600); }
+  if (document.readyState === 'complete') init(); else window.addEventListener('load', init);
+  window.addEventListener('resize', layout);
+})();
+</script>

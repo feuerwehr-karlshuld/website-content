@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 16-gedankenblasen</title><link rel="stylesheet" href="preview.css"></head><body>
+<header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
+<main><div class="container"><div class="section"><div class="content-padding">
+<div class="m-preview">Vorschau: <b>16-gedankenblasen</b> &ndash; Nachbildung der Seite <code>/test</code></div>
+<h1>test</h1>
+<div class="html-snippet"><h1>Outlook Kalender</h1>
+<p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
+<h2>Test Formular</h2>
+<form action="#">
+<p>Dies ist nur ein Test</p>
+<div class="field-wrapper"><label>Was?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wo?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
+<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+</form>
+<div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
+<div class="download-listing-container">
+<div class="download-listing-element"><a href="#">Anleitung Android - 413,9 KB - PDF</a></div>
+<div class="download-listing-element"><a href="#">Anleitung iOS - 508,2 KB - PDF</a></div>
+</div>
+<h2>Aktuelles aus unserer Feuerwehr</h2>
+<h3>Leistungsprüfung Wasser mit Kameradschaftsabend</h3>
+<p>Dieses Jahr konnten wir mit zwei Gruppen zur Leistungsprüfung antreten, darunter erstmalig zwei Mitglieder unserer Jugendfeuerwehr.</p>
+<h3>Person mittels Drehleiter aus Wohnung gerettet</h3>
+<p>Am heutigen Einsatz wurden wir gemeinsam mit der Drehleiter aus Neuburg zu einer Personenrettung alarmiert.</p>
+<h3>Stammtisch im Dezember</h3>
+<p>Alle Vereinsmitglieder und Feuerwehrinteressierte sind eingeladen.</p>
+</div></div></div></main>
+<footer><div class="container"><div class="m-cols">
+<div><h2 class="h4">Unser Leitsatz</h2><p>Retten - Löschen - Bergen - Schützen</p></div>
+<div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
+<div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
+</div>
+<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+</div></footer>
+<!--
+  16 - Gedankenblasen (thought bubbles with pictograms) - Feuerwehr Wichtel
+  Tiny JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+
+  Every few seconds a small thought bubble drifts up from one of the headings that is
+  currently on screen. Inside: a pictogram (Brezn, flame, Herz, Stern, Maßkrug, Tannenbaum,
+  water drop). Then it pops. Nobody thinks it - or does somebody?
+
+  Tuning: HEADINGS = where bubbles start, EVERY_MS = pause between bubbles.
+-->
+<style>
+  .ffw-w16 {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    margin: -34px 0 0 -17px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #0098d4;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    pointer-events: none;
+    opacity: 0;
+    animation: ffw-w16-rise 5s ease-out forwards;
+  }
+  .ffw-w16 svg { position: absolute; inset: 5px; width: 20px; height: 20px; }
+  /* the two little tail bubbles */
+  .ffw-w16::before, .ffw-w16::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #0098d4;
+  }
+  .ffw-w16::before { width: 8px; height: 8px; left: 6px; bottom: -14px; }
+  .ffw-w16::after  { width: 4px; height: 4px; left: 2px; bottom: -22px; }
+  @keyframes ffw-w16-rise {
+    0%   { transform: translateY(14px) scale(.4); opacity: 0; }
+    12%  { transform: translateY(0) scale(1);     opacity: 1; }
+    80%  { transform: translateY(-34px) scale(1); opacity: 1; }
+    92%  { transform: translateY(-40px) scale(1.25); opacity: .4; }
+    100% { transform: translateY(-42px) scale(1.4);  opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ffw-w16 { animation-duration: .01s; }
+  }
+</style>
+
+<script>
+(function () {
+  if (window.__ffwW16) return;
+  window.__ffwW16 = true;
+
+  var HEADINGS = 'main h1, main h2, main h3, footer h2, footer h3';
+  var EVERY_MS = 4200;
+
+  var ICONS = [
+    '<path fill="#c8102e" d="M12 2c1 5 6 7 6 13a6 6 0 0 1-12 0c0-3 1.5-5 3-6 0 2 1 3 2 3 0-4-1-6 1-10z"/>',
+    '<path d="M6 19C2 12 6 5 12 5s10 7 6 14M6 19L17 9M18 19L7 9" fill="none" stroke="#b86a25" stroke-width="2.6" stroke-linecap="round"/>',
+    '<path fill="#e0215a" d="M12 21C4 14 2 10 2 7a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 3-2 7-10 14z"/>',
+    '<path fill="#f5c542" stroke="#b8860b" stroke-width="1" d="M12 2l2.9 6.6 7.1.7-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.3l7.1-.7z"/>',
+    '<path fill="#f5c542" stroke="#b8860b" stroke-width="1" d="M4 8h12v13H4z"/><path d="M16 10h2.5a2.5 2.5 0 0 1 0 6H16" fill="none" stroke="#b8860b" stroke-width="2"/><path fill="#fff" stroke="#999" stroke-width="1" d="M3 8a3 3 0 0 1 4-3 3 3 0 0 1 5 0 3 3 0 0 1 4 0 3 3 0 0 1 1 3z"/>',
+    '<path fill="#2f6b3a" d="M12 2l6 8h-3l5 7H4l5-7H6z"/><rect x="11" y="17" width="2" height="5" fill="#6b4a2b"/>',
+    '<path fill="#1a9ad6" d="M12 2C12 2 5 11 5 15a7 7 0 0 0 14 0C19 11 12 2 12 2z"/>'
+  ];
+
+  var layer = document.createElement('div');
+  layer.setAttribute('aria-hidden', 'true');
+  layer.style.cssText = 'position:absolute;left:0;top:0;width:0;height:0;overflow:visible;pointer-events:none;z-index:2147483000';
+  document.documentElement.appendChild(layer);
+
+  function spawn() {
+    var all = document.querySelectorAll(HEADINGS);
+    var visible = [];
+    for (var i = 0; i < all.length; i++) {
+      var r = all[i].getBoundingClientRect();
+      if (r.width > 0 && r.bottom > 40 && r.top < window.innerHeight - 40) visible.push(all[i]);
+    }
+    if (!visible.length) return;
+    var t = visible[Math.floor(Math.random() * visible.length)];
+    var rr = t.getBoundingClientRect();
+    var b = document.createElement('div');
+    b.className = 'ffw-w16';
+    b.innerHTML = '<svg viewBox="0 0 24 24">' + ICONS[Math.floor(Math.random() * ICONS.length)] + '</svg>';
+    b.style.left = (rr.left + window.pageXOffset + 24 + Math.random() * Math.min(rr.width - 48, 300)) + 'px';
+    b.style.top = (rr.top + window.pageYOffset + 4) + 'px';
+    layer.appendChild(b);
+    setTimeout(function () { if (b.parentNode) b.parentNode.removeChild(b); }, 5200);
+  }
+
+  function start() { setTimeout(spawn, 1200); setInterval(spawn, EVERY_MS); }
+  if (document.readyState === 'complete') start(); else window.addEventListener('load', start);
+})();
+</script>

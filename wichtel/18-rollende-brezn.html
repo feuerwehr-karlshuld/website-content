@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 18-rollende-brezn</title><link rel="stylesheet" href="preview.css"></head><body>
+<header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
+<main><div class="container"><div class="section"><div class="content-padding">
+<div class="m-preview">Vorschau: <b>18-rollende-brezn</b> &ndash; Nachbildung der Seite <code>/test</code></div>
+<h1>test</h1>
+<div class="html-snippet"><h1>Outlook Kalender</h1>
+<p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
+<h2>Test Formular</h2>
+<form action="#">
+<p>Dies ist nur ein Test</p>
+<div class="field-wrapper"><label>Was?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wo?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
+<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+</form>
+<div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
+<div class="download-listing-container">
+<div class="download-listing-element"><a href="#">Anleitung Android - 413,9 KB - PDF</a></div>
+<div class="download-listing-element"><a href="#">Anleitung iOS - 508,2 KB - PDF</a></div>
+</div>
+<h2>Aktuelles aus unserer Feuerwehr</h2>
+<h3>Leistungsprüfung Wasser mit Kameradschaftsabend</h3>
+<p>Dieses Jahr konnten wir mit zwei Gruppen zur Leistungsprüfung antreten, darunter erstmalig zwei Mitglieder unserer Jugendfeuerwehr.</p>
+<h3>Person mittels Drehleiter aus Wohnung gerettet</h3>
+<p>Am heutigen Einsatz wurden wir gemeinsam mit der Drehleiter aus Neuburg zu einer Personenrettung alarmiert.</p>
+<h3>Stammtisch im Dezember</h3>
+<p>Alle Vereinsmitglieder und Feuerwehrinteressierte sind eingeladen.</p>
+</div></div></div></main>
+<footer><div class="container"><div class="m-cols">
+<div><h2 class="h4">Unser Leitsatz</h2><p>Retten - Löschen - Bergen - Schützen</p></div>
+<div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
+<div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
+</div>
+<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+</div></footer>
+<!--
+  18 - Rollende Brezn (rolling pretzel) - Feuerwehr Wichtel
+  Pure CSS/SVG, no JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+
+  A big salted Brezn rolls along the bottom edge of the viewport from left to right, hopping
+  a little, then disappears. Appears again after a pause (24 s loop, ~13 s on screen).
+
+  Tuning: --size, --bottom in #ffw-w18; animation duration for the speed.
+-->
+<style>
+  #ffw-w18 {
+    --size: 64px;
+    --bottom: 34px;           /* keep it above a possible ticker bar (effect 15) */
+    position: fixed;
+    left: 0;
+    bottom: var(--bottom);
+    width: var(--size);
+    height: var(--size);
+    z-index: 2147483000;
+    pointer-events: none;
+    transform: translateX(-120px);
+    animation: ffw-w18-run 24s linear infinite;
+  }
+  #ffw-w18 .hop {
+    width: 100%;
+    height: 100%;
+    animation: ffw-w18-hop .7s ease-out infinite;
+  }
+  #ffw-w18 svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    animation: ffw-w18-spin 2.2s linear infinite;
+    filter: drop-shadow(1px 3px 2px rgba(0,0,0,.3));
+  }
+  @keyframes ffw-w18-run {
+    0%   { transform: translateX(-120px); }
+    55%  { transform: translateX(calc(100vw + 120px)); }
+    100% { transform: translateX(calc(100vw + 120px)); }
+  }
+  @keyframes ffw-w18-hop {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-7px); }
+  }
+  @keyframes ffw-w18-spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) {
+    #ffw-w18 { animation: none; transform: translateX(8vw); }
+    #ffw-w18 .hop, #ffw-w18 svg { animation: none; }
+  }
+</style>
+
+<div id="ffw-w18" aria-hidden="true">
+  <div class="hop">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke-linecap="round">
+        <g stroke="#7a431a" stroke-width="11">
+          <path d="M20 74C-2 40 22 8 50 8C78 8 102 40 80 74"/>
+          <path d="M20 74C38 60 70 52 92 38"/>
+          <path d="M80 74C62 60 30 52 8 38"/>
+        </g>
+        <g stroke="#c47a2c" stroke-width="7.5">
+          <path d="M20 74C-2 40 22 8 50 8C78 8 102 40 80 74"/>
+          <path d="M20 74C38 60 70 52 92 38"/>
+          <path d="M80 74C62 60 30 52 8 38"/>
+        </g>
+        <g stroke="#e0a352" stroke-width="2.4" opacity=".8">
+          <path d="M18 66C2 40 24 12 50 12"/>
+          <path d="M24 70C40 60 66 54 86 42"/>
+        </g>
+      </g>
+      <!-- salt crystals -->
+      <g fill="#fff" opacity=".95">
+        <circle cx="30" cy="22" r="1.7"/><circle cx="50" cy="9"  r="1.6"/><circle cx="72" cy="20" r="1.8"/>
+        <circle cx="12" cy="44" r="1.5"/><circle cx="88" cy="46" r="1.6"/><circle cx="46" cy="58" r="1.7"/>
+        <circle cx="62" cy="52" r="1.4"/><circle cx="34" cy="48" r="1.5"/><circle cx="68" cy="66" r="1.6"/>
+      </g>
+    </svg>
+  </div>
+</div>

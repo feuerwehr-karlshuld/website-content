@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 15-piktogramm-ticker</title><link rel="stylesheet" href="preview.css"></head><body>
+<header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
+<main><div class="container"><div class="section"><div class="content-padding">
+<div class="m-preview">Vorschau: <b>15-piktogramm-ticker</b> &ndash; Nachbildung der Seite <code>/test</code></div>
+<h1>test</h1>
+<div class="html-snippet"><h1>Outlook Kalender</h1>
+<p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
+<h2>Test Formular</h2>
+<form action="#">
+<p>Dies ist nur ein Test</p>
+<div class="field-wrapper"><label>Was?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wo?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
+<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+</form>
+<div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
+<div class="download-listing-container">
+<div class="download-listing-element"><a href="#">Anleitung Android - 413,9 KB - PDF</a></div>
+<div class="download-listing-element"><a href="#">Anleitung iOS - 508,2 KB - PDF</a></div>
+</div>
+<h2>Aktuelles aus unserer Feuerwehr</h2>
+<h3>Leistungsprüfung Wasser mit Kameradschaftsabend</h3>
+<p>Dieses Jahr konnten wir mit zwei Gruppen zur Leistungsprüfung antreten, darunter erstmalig zwei Mitglieder unserer Jugendfeuerwehr.</p>
+<h3>Person mittels Drehleiter aus Wohnung gerettet</h3>
+<p>Am heutigen Einsatz wurden wir gemeinsam mit der Drehleiter aus Neuburg zu einer Personenrettung alarmiert.</p>
+<h3>Stammtisch im Dezember</h3>
+<p>Alle Vereinsmitglieder und Feuerwehrinteressierte sind eingeladen.</p>
+</div></div></div></main>
+<footer><div class="container"><div class="m-cols">
+<div><h2 class="h4">Unser Leitsatz</h2><p>Retten - Löschen - Bergen - Schützen</p></div>
+<div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
+<div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
+</div>
+<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+</div></footer>
+<!--
+  15 - Piktogramm-Ticker (ticker bar with pictograms only) - Feuerwehr Wichtel
+  Pure CSS/SVG, no JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+
+  A slim red ticker bar at the bottom of the screen (like the red bar of the site), but
+  instead of words, little white pictograms scroll by: flame, Brezn, Tannenbaum, Stern,
+  Herz, Leiter, Maßkrug, Glocke. Clicks go through the bar.
+
+  Tuning: height in #ffw-w15, speed = animation duration of .track.
+-->
+<style>
+  #ffw-w15 {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 30px;
+    z-index: 2147482990;
+    pointer-events: none;
+    overflow: hidden;
+    background: #c8102e;
+    border-top: 2px solid #fff;
+    box-shadow: 0 -2px 6px rgba(0,0,0,.25);
+  }
+  #ffw-w15 .track {
+    display: flex;
+    width: max-content;
+    height: 100%;
+    animation: ffw-w15-run 45s linear infinite;
+  }
+  #ffw-w15 .set {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+  }
+  #ffw-w15 .set svg {
+    width: 20px;
+    height: 20px;
+    margin: 0 28px;
+    fill: #fff;
+    flex: 0 0 auto;
+  }
+  @keyframes ffw-w15-run {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) { #ffw-w15 .track { animation: none; } }
+</style>
+
+<div id="ffw-w15" aria-hidden="true">
+  <svg width="0" height="0" style="position:absolute" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <symbol id="ffw-w15-flame" viewBox="0 0 24 24"><path d="M12 2c1 5 6 7 6 13a6 6 0 0 1-12 0c0-3 1.5-5 3-6 0 2 1 3 2 3 0-4-1-6 1-10z"/></symbol>
+      <symbol id="ffw-w15-brezn" viewBox="0 0 24 24"><path d="M6 19C2 12 6 5 12 5s10 7 6 14M6 19L17 9M18 19L7 9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></symbol>
+      <symbol id="ffw-w15-tree" viewBox="0 0 24 24"><path d="M12 2l6 8h-3l5 7H4l5-7H6z"/><rect x="11" y="17" width="2" height="5"/></symbol>
+      <symbol id="ffw-w15-star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.3l7.1-.7z"/></symbol>
+      <symbol id="ffw-w15-heart" viewBox="0 0 24 24"><path d="M12 21C4 14 2 10 2 7a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 3-2 7-10 14z"/></symbol>
+      <symbol id="ffw-w15-ladder" viewBox="0 0 24 24"><g fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M7 2v20M17 2v20M7 7h10M7 12h10M7 17h10"/></g></symbol>
+      <symbol id="ffw-w15-mug" viewBox="0 0 24 24"><path d="M4 8h12v13H4z"/><path d="M16 10h2.5a2.5 2.5 0 0 1 0 6H16" fill="none" stroke="#fff" stroke-width="2"/><path d="M3 8a3 3 0 0 1 4-3 3 3 0 0 1 5 0 3 3 0 0 1 4 0 3 3 0 0 1 1 3z"/></symbol>
+      <symbol id="ffw-w15-bell" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-6 6v5l-2 3h16l-2-3V9a6 6 0 0 0-6-6z"/><path d="M10 19a2 2 0 0 0 4 0z"/></symbol>
+    </defs>
+  </svg>
+  <div class="track">
+    <div class="set">
+      <svg><use href="#ffw-w15-flame"/></svg><svg><use href="#ffw-w15-brezn"/></svg><svg><use href="#ffw-w15-tree"/></svg><svg><use href="#ffw-w15-star"/></svg>
+      <svg><use href="#ffw-w15-heart"/></svg><svg><use href="#ffw-w15-ladder"/></svg><svg><use href="#ffw-w15-mug"/></svg><svg><use href="#ffw-w15-bell"/></svg>
+      <svg><use href="#ffw-w15-flame"/></svg><svg><use href="#ffw-w15-mug"/></svg><svg><use href="#ffw-w15-star"/></svg><svg><use href="#ffw-w15-brezn"/></svg>
+      <svg><use href="#ffw-w15-bell"/></svg><svg><use href="#ffw-w15-tree"/></svg><svg><use href="#ffw-w15-heart"/></svg><svg><use href="#ffw-w15-ladder"/></svg>
+      <svg><use href="#ffw-w15-flame"/></svg><svg><use href="#ffw-w15-brezn"/></svg><svg><use href="#ffw-w15-tree"/></svg><svg><use href="#ffw-w15-star"/></svg>
+      <svg><use href="#ffw-w15-heart"/></svg><svg><use href="#ffw-w15-ladder"/></svg><svg><use href="#ffw-w15-mug"/></svg><svg><use href="#ffw-w15-bell"/></svg>
+    </div>
+    <!-- identical copy for the seamless loop -->
+    <div class="set">
+      <svg><use href="#ffw-w15-flame"/></svg><svg><use href="#ffw-w15-brezn"/></svg><svg><use href="#ffw-w15-tree"/></svg><svg><use href="#ffw-w15-star"/></svg>
+      <svg><use href="#ffw-w15-heart"/></svg><svg><use href="#ffw-w15-ladder"/></svg><svg><use href="#ffw-w15-mug"/></svg><svg><use href="#ffw-w15-bell"/></svg>
+      <svg><use href="#ffw-w15-flame"/></svg><svg><use href="#ffw-w15-mug"/></svg><svg><use href="#ffw-w15-star"/></svg><svg><use href="#ffw-w15-brezn"/></svg>
+      <svg><use href="#ffw-w15-bell"/></svg><svg><use href="#ffw-w15-tree"/></svg><svg><use href="#ffw-w15-heart"/></svg><svg><use href="#ffw-w15-ladder"/></svg>
+      <svg><use href="#ffw-w15-flame"/></svg><svg><use href="#ffw-w15-brezn"/></svg><svg><use href="#ffw-w15-tree"/></svg><svg><use href="#ffw-w15-star"/></svg>
+      <svg><use href="#ffw-w15-heart"/></svg><svg><use href="#ffw-w15-ladder"/></svg><svg><use href="#ffw-w15-mug"/></svg><svg><use href="#ffw-w15-bell"/></svg>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 02-wasserspuren</title><link rel="stylesheet" href="preview.css"></head><body>
+<header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
+<main><div class="container"><div class="section"><div class="content-padding">
+<div class="m-preview">Vorschau: <b>02-wasserspuren</b> &ndash; Nachbildung der Seite <code>/test</code></div>
+<h1>test</h1>
+<div class="html-snippet"><h1>Outlook Kalender</h1>
+<p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
+<h2>Test Formular</h2>
+<form action="#">
+<p>Dies ist nur ein Test</p>
+<div class="field-wrapper"><label>Was?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wo?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
+<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+</form>
+<div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
+<div class="download-listing-container">
+<div class="download-listing-element"><a href="#">Anleitung Android - 413,9 KB - PDF</a></div>
+<div class="download-listing-element"><a href="#">Anleitung iOS - 508,2 KB - PDF</a></div>
+</div>
+<h2>Aktuelles aus unserer Feuerwehr</h2>
+<h3>Leistungsprüfung Wasser mit Kameradschaftsabend</h3>
+<p>Dieses Jahr konnten wir mit zwei Gruppen zur Leistungsprüfung antreten, darunter erstmalig zwei Mitglieder unserer Jugendfeuerwehr.</p>
+<h3>Person mittels Drehleiter aus Wohnung gerettet</h3>
+<p>Am heutigen Einsatz wurden wir gemeinsam mit der Drehleiter aus Neuburg zu einer Personenrettung alarmiert.</p>
+<h3>Stammtisch im Dezember</h3>
+<p>Alle Vereinsmitglieder und Feuerwehrinteressierte sind eingeladen.</p>
+</div></div></div></main>
+<footer><div class="container"><div class="m-cols">
+<div><h2 class="h4">Unser Leitsatz</h2><p>Retten - Löschen - Bergen - Schützen</p></div>
+<div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
+<div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
+</div>
+<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+</div></footer>
+<!--
+  02 - Wasserspuren (wet footprints + puddle) - Feuerwehr Wichtel
+  Pure CSS, no JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+
+  Wet little boot prints lead to a puddle with slow ripples (the hose was leaking again).
+  The prints appear one after another and dry up slowly.
+
+  Tuning: every <i> is one print (--x / --y / --r / --s / --d, see effect 01).
+  The puddle position is #ffw-w02 .pud { left / top }.
+-->
+<style>
+  #ffw-w02 {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483000;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  #ffw-w02 i {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: 16px;
+    height: 38px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 38'%3E%3Cg fill='%231a9ad6'%3E%3Cpath d='M8 1c4 0 7 4 7 10 0 4-1 7-2 9H3c-1-2-2-5-2-9C1 5 4 1 8 1z'/%3E%3Cpath d='M3 26h10c0 5-1 11-5 11s-5-6-5-11z'/%3E%3C/g%3E%3Cpath d='M5 6c1-2 3-2 4-1' stroke='%23fff' stroke-width='1.4' fill='none' opacity='.7' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+    transform: translate(-50%, -50%) rotate(var(--r, 248deg)) scaleX(var(--s, 1));
+    opacity: 0;
+    animation: ffw-w02-wet 20s ease-in-out infinite;
+    animation-delay: var(--d, 0s);
+  }
+  @keyframes ffw-w02-wet {
+    0%   { opacity: 0; }
+    4%   { opacity: .55; }
+    60%  { opacity: .4; }
+    90%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  /* the puddle */
+  #ffw-w02 .pud {
+    position: absolute;
+    left: 20vw;
+    top: 88vh;
+    width: 150px;
+    height: 36px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 40% 35%, rgba(255,255,255,.55) 0, rgba(255,255,255,0) 35%),
+                radial-gradient(ellipse, rgba(26,154,214,.55) 0, rgba(26,154,214,.4) 60%, rgba(26,154,214,.12) 100%);
+    box-shadow: 0 0 0 2px rgba(26,154,214,.35);
+  }
+  #ffw-w02 .pud b {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 40px;
+    height: 10px;
+    margin: -5px 0 0 -20px;
+    border: 2px solid rgba(255,255,255,.8);
+    border-radius: 50%;
+    opacity: 0;
+    animation: ffw-w02-ripple 5s ease-out infinite;
+  }
+  #ffw-w02 .pud b:nth-child(2) { animation-delay: 1.6s; }
+  #ffw-w02 .pud b:nth-child(3) { animation-delay: 3.2s; }
+  @keyframes ffw-w02-ripple {
+    0%   { transform: scale(.3); opacity: 0; }
+    15%  { opacity: .9; }
+    100% { transform: scale(3.2); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #ffw-w02 i { animation: none; opacity: .4; }
+    #ffw-w02 .pud b { animation: none; }
+  }
+</style>
+
+<div id="ffw-w02" aria-hidden="true">
+  <i style="--x:70vw; --y:53.8vh; --s:1;  --d:0s"></i>
+  <i style="--x:64vw; --y:60.5vh; --s:-1; --d:1.2s"></i>
+  <i style="--x:58vw; --y:62.4vh; --s:1;  --d:2.4s"></i>
+  <i style="--x:52vw; --y:69.1vh; --s:-1; --d:3.6s"></i>
+  <i style="--x:46vw; --y:71vh;   --s:1;  --d:4.8s"></i>
+  <i style="--x:40vw; --y:77.7vh; --s:-1; --d:6s"></i>
+  <i style="--x:34vw; --y:79.6vh; --s:1;  --d:7.2s"></i>
+  <i style="--x:28vw; --y:86.3vh; --s:-1; --d:8.4s"></i>
+  <div class="pud"><b></b><b></b><b></b></div>
+</div>

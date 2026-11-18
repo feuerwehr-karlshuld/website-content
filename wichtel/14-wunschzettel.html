@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 14-wunschzettel</title><link rel="stylesheet" href="preview.css"></head><body>
+<header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
+<main><div class="container"><div class="section"><div class="content-padding">
+<div class="m-preview">Vorschau: <b>14-wunschzettel</b> &ndash; Nachbildung der Seite <code>/test</code></div>
+<h1>test</h1>
+<div class="html-snippet"><h1>Outlook Kalender</h1>
+<p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
+<h2>Test Formular</h2>
+<form action="#">
+<p>Dies ist nur ein Test</p>
+<div class="field-wrapper"><label>Was?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wo?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
+<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+</form>
+<div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
+<div class="download-listing-container">
+<div class="download-listing-element"><a href="#">Anleitung Android - 413,9 KB - PDF</a></div>
+<div class="download-listing-element"><a href="#">Anleitung iOS - 508,2 KB - PDF</a></div>
+</div>
+<h2>Aktuelles aus unserer Feuerwehr</h2>
+<h3>Leistungsprüfung Wasser mit Kameradschaftsabend</h3>
+<p>Dieses Jahr konnten wir mit zwei Gruppen zur Leistungsprüfung antreten, darunter erstmalig zwei Mitglieder unserer Jugendfeuerwehr.</p>
+<h3>Person mittels Drehleiter aus Wohnung gerettet</h3>
+<p>Am heutigen Einsatz wurden wir gemeinsam mit der Drehleiter aus Neuburg zu einer Personenrettung alarmiert.</p>
+<h3>Stammtisch im Dezember</h3>
+<p>Alle Vereinsmitglieder und Feuerwehrinteressierte sind eingeladen.</p>
+</div></div></div></main>
+<footer><div class="container"><div class="m-cols">
+<div><h2 class="h4">Unser Leitsatz</h2><p>Retten - Löschen - Bergen - Schützen</p></div>
+<div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
+<div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
+</div>
+<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+</div></footer>
+<!--
+  14 - Wunschzettel (crayon wish list, only pictures) - Feuerwehr Wichtel
+  Pure CSS/SVG, no JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+
+  A sheet of paper taped to the edge of the screen. A child's crayon drawings appear one by
+  one: a Drehleiter fire truck, a Brezn, a Maßkrug, a heart and a star. No words - the imp
+  can't spell. Loops every 36 seconds.
+
+  Tuning: --x / --y / --w in #ffw-w14.
+-->
+<style>
+  #ffw-w14 {
+    --x: 1.5vw;              /* distance from the right viewport edge */
+    --y: 10vh;               /* distance from the top */
+    --w: 170px;
+    position: fixed;
+    right: var(--x);
+    top: var(--y);
+    width: var(--w);
+    z-index: 2147483000;
+    pointer-events: none;
+    transform: rotate(3deg);
+    filter: drop-shadow(1px 3px 4px rgba(0,0,0,.35));
+  }
+  #ffw-w14 .paper {
+    position: relative;
+    background: #fffdf2;
+    padding-top: 10px;
+    border-radius: 2px;
+  }
+  /* Bavarian Rauten border on top */
+  #ffw-w14 .paper::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 10px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Crect width='10' height='10' fill='%23fff'/%3E%3Cpath d='M5 0L10 5L5 10L0 5z' fill='%230098d4'/%3E%3C/svg%3E");
+    border-radius: 2px 2px 0 0;
+  }
+  /* tape */
+  #ffw-w14 .paper::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -9px;
+    width: 52px;
+    height: 16px;
+    margin-left: -26px;
+    background: rgba(255, 224, 120, .7);
+    transform: rotate(-3deg);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  }
+  #ffw-w14 svg { display: block; width: 100%; height: auto; }
+  #ffw-w14 .cr {
+    fill: none;
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: ffw-w14-draw 36s ease-in-out infinite;
+  }
+  #ffw-w14 .d2 { animation-delay: 2.5s; }
+  #ffw-w14 .d3 { animation-delay: 5s; }
+  #ffw-w14 .d4 { animation-delay: 7.5s; }
+  #ffw-w14 .d5 { animation-delay: 10s; }
+  @keyframes ffw-w14-draw {
+    0%   { stroke-dashoffset: 1; opacity: 1; }
+    6%   { stroke-dashoffset: 0; opacity: 1; }
+    82%  { stroke-dashoffset: 0; opacity: 1; }
+    94%  { stroke-dashoffset: 0; opacity: 0; }
+    100% { stroke-dashoffset: 1; opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #ffw-w14 .cr { animation: none; stroke-dashoffset: 0; }
+  }
+  @media (max-width: 900px) { #ffw-w14 { display: none; } }
+</style>
+
+<div id="ffw-w14" aria-hidden="true">
+  <div class="paper">
+    <svg viewBox="0 0 150 190" xmlns="http://www.w3.org/2000/svg">
+      <!-- Drehleiter truck -->
+      <path class="cr d1" pathLength="1" stroke="#c8102e" d="M14 62H96V40H14Z"/>
+      <path class="cr d1" pathLength="1" stroke="#c8102e" d="M96 62H124V50L112 44H96"/>
+      <path class="cr d1" pathLength="1" stroke="#1a9ad6" d="M100 48H112L118 52H100Z"/>
+      <path class="cr d1" pathLength="1" stroke="#444" d="M22 36L92 12M27 42L97 18M40 31L44 37M56 25L60 31M72 19L76 25M86 14L90 20"/>
+      <circle class="cr d1" pathLength="1" cx="36"  cy="66" r="7" stroke="#222"/>
+      <circle class="cr d1" pathLength="1" cx="108" cy="66" r="7" stroke="#222"/>
+      <path class="cr d1" pathLength="1" stroke="#1a9ad6" d="M104 33V37"/>
+      <!-- Brezn -->
+      <path class="cr d2" pathLength="1" stroke="#b86a25" d="M20 128C10 112 22 98 36 98C50 98 62 112 52 128M20 128L52 106M52 128L20 106"/>
+      <!-- Massskrug -->
+      <path class="cr d3" pathLength="1" stroke="#d9a400" d="M92 100H126V138H92Z"/>
+      <path class="cr d3" pathLength="1" stroke="#d9a400" d="M126 108H136C142 108 142 128 136 128H126"/>
+      <path class="cr d3" pathLength="1" stroke="#999"    d="M90 100Q94 90 98 98Q102 88 108 97Q112 88 118 97Q122 90 128 100"/>
+      <!-- heart -->
+      <path class="cr d4" pathLength="1" stroke="#e0215a" d="M36 178C14 164 18 148 30 150C34 151 36 155 36 155C36 155 38 151 42 150C54 148 58 164 36 178Z"/>
+      <!-- star -->
+      <path class="cr d5" pathLength="1" stroke="#e6a800" d="M108 148L113 160L126 161L116 169L119 182L108 175L97 182L100 169L90 161L103 160Z"/>
+    </svg>
+  </div>
+</div>

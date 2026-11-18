@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 05-schlauch-mit-knoten</title><link rel="stylesheet" href="preview.css"></head><body>
+<header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
+<main><div class="container"><div class="section"><div class="content-padding">
+<div class="m-preview">Vorschau: <b>05-schlauch-mit-knoten</b> &ndash; Nachbildung der Seite <code>/test</code></div>
+<h1>test</h1>
+<div class="html-snippet"><h1>Outlook Kalender</h1>
+<p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
+<h2>Test Formular</h2>
+<form action="#">
+<p>Dies ist nur ein Test</p>
+<div class="field-wrapper"><label>Was?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wo?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
+<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+</form>
+<div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
+<div class="download-listing-container">
+<div class="download-listing-element"><a href="#">Anleitung Android - 413,9 KB - PDF</a></div>
+<div class="download-listing-element"><a href="#">Anleitung iOS - 508,2 KB - PDF</a></div>
+</div>
+<h2>Aktuelles aus unserer Feuerwehr</h2>
+<h3>Leistungsprüfung Wasser mit Kameradschaftsabend</h3>
+<p>Dieses Jahr konnten wir mit zwei Gruppen zur Leistungsprüfung antreten, darunter erstmalig zwei Mitglieder unserer Jugendfeuerwehr.</p>
+<h3>Person mittels Drehleiter aus Wohnung gerettet</h3>
+<p>Am heutigen Einsatz wurden wir gemeinsam mit der Drehleiter aus Neuburg zu einer Personenrettung alarmiert.</p>
+<h3>Stammtisch im Dezember</h3>
+<p>Alle Vereinsmitglieder und Feuerwehrinteressierte sind eingeladen.</p>
+</div></div></div></main>
+<footer><div class="container"><div class="m-cols">
+<div><h2 class="h4">Unser Leitsatz</h2><p>Retten - Löschen - Bergen - Schützen</p></div>
+<div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
+<div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
+</div>
+<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+</div></footer>
+<!--
+  05 - Schlauch mit Knoten (hose with a knot in it) - Feuerwehr Wichtel
+  Pure CSS/SVG, no JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+
+  A red fire hose with Storz couplings lies on the bottom edge of the screen - with a
+  fat knot in the middle and a slow drip leaking out.
+
+  Tuning: --x (left offset) and --w (width) in #ffw-w05.
+-->
+<style>
+  #ffw-w05 {
+    --x: 12vw;
+    --w: clamp(220px, 28vw, 420px);
+    position: fixed;
+    left: var(--x);
+    bottom: -4px;
+    width: var(--w);
+    height: auto;
+    z-index: 2147483000;
+    pointer-events: none;
+    filter: drop-shadow(0 3px 3px rgba(0,0,0,.35));
+    overflow: visible;
+  }
+  #ffw-w05 .drop {
+    animation: ffw-w05-drip 3.6s ease-in infinite;
+    opacity: 0;
+  }
+  #ffw-w05 .drop + .drop { animation-delay: 1.9s; }
+  @keyframes ffw-w05-drip {
+    0%   { transform: translateY(0);   opacity: 0; }
+    12%  { opacity: .9; }
+    80%  { transform: translateY(16px); opacity: .9; }
+    100% { transform: translateY(18px); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #ffw-w05 .drop { animation: none; }
+  }
+</style>
+
+<svg id="ffw-w05" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" aria-hidden="true">
+  <!-- hose: dark edge, red body, soft highlight -->
+  <path d="M16 80H120C200 80 262 48 242 22C224 -2 172 22 190 56C205 84 262 86 300 80H384"
+        fill="none" stroke="#6b0b19" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M16 80H120C200 80 262 48 242 22C224 -2 172 22 190 56C205 84 262 86 300 80H384"
+        fill="none" stroke="#c8102e" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M16 77H120C200 77 262 45 242 19C224 -5 172 19 190 53C205 81 262 83 300 77H384"
+        fill="none" stroke="#ff7a8a" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="26 18" opacity=".55"/>
+  <!-- Storz couplings -->
+  <g stroke="#6b7378" stroke-width="2">
+    <rect x="0"   y="68" width="20" height="24" rx="4" fill="#b9c0c6"/>
+    <rect x="380" y="68" width="20" height="24" rx="4" fill="#b9c0c6"/>
+  </g>
+  <g stroke="#6b7378" stroke-width="2" fill="none">
+    <path d="M6 72v16M13 72v16"/>
+    <path d="M387 72v16M394 72v16"/>
+  </g>
+  <!-- leaking drops under the knot -->
+  <path class="drop" d="M196 72c0 0-4 6-4 9a4 4 0 0 0 8 0c0-3-4-9-4-9z" fill="#1a9ad6"/>
+  <path class="drop" d="M214 74c0 0-4 6-4 9a4 4 0 0 0 8 0c0-3-4-9-4-9z" fill="#1a9ad6"/>
+</svg>

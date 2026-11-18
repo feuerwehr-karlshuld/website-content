@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 13-rauchmelder</title><link rel="stylesheet" href="preview.css"></head><body>
+<header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
+<main><div class="container"><div class="section"><div class="content-padding">
+<div class="m-preview">Vorschau: <b>13-rauchmelder</b> &ndash; Nachbildung der Seite <code>/test</code></div>
+<h1>test</h1>
+<div class="html-snippet"><h1>Outlook Kalender</h1>
+<p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
+<h2>Test Formular</h2>
+<form action="#">
+<p>Dies ist nur ein Test</p>
+<div class="field-wrapper"><label>Was?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wo?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
+<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+</form>
+<div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
+<div class="download-listing-container">
+<div class="download-listing-element"><a href="#">Anleitung Android - 413,9 KB - PDF</a></div>
+<div class="download-listing-element"><a href="#">Anleitung iOS - 508,2 KB - PDF</a></div>
+</div>
+<h2>Aktuelles aus unserer Feuerwehr</h2>
+<h3>Leistungsprüfung Wasser mit Kameradschaftsabend</h3>
+<p>Dieses Jahr konnten wir mit zwei Gruppen zur Leistungsprüfung antreten, darunter erstmalig zwei Mitglieder unserer Jugendfeuerwehr.</p>
+<h3>Person mittels Drehleiter aus Wohnung gerettet</h3>
+<p>Am heutigen Einsatz wurden wir gemeinsam mit der Drehleiter aus Neuburg zu einer Personenrettung alarmiert.</p>
+<h3>Stammtisch im Dezember</h3>
+<p>Alle Vereinsmitglieder und Feuerwehrinteressierte sind eingeladen.</p>
+</div></div></div></main>
+<footer><div class="container"><div class="m-cols">
+<div><h2 class="h4">Unser Leitsatz</h2><p>Retten - Löschen - Bergen - Schützen</p></div>
+<div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
+<div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
+</div>
+<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+</div></footer>
+<!--
+  13 - Rauchmelder (smoke detector on the "ceiling") - Feuerwehr Wichtel
+  Pure CSS, no JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+
+  A little white smoke detector is stuck to the top edge of the viewport. Its red LED blinks
+  slowly. Every ~16 seconds it "senses" something: it trembles a bit and a few soft sound
+  rings spread out. (A joke about nothing burning - or is something?)
+
+  Tuning: --x in #ffw-w13 (distance from the left edge).
+-->
+<style>
+  #ffw-w13 {
+    --x: 58vw;
+    position: fixed;
+    top: 0;
+    left: var(--x);
+    width: 54px;
+    height: 54px;
+    z-index: 2147483000;
+    pointer-events: none;
+  }
+  /* the detector: a half disc that hangs from the top edge */
+  #ffw-w13 .body {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 54px;
+    height: 24px;
+    border-radius: 0 0 54px 54px / 0 0 24px 24px;
+    background: radial-gradient(ellipse at 50% 0, #ffffff 0, #f1f1ee 60%, #d9d9d4 100%);
+    box-shadow: 0 2px 4px rgba(0,0,0,.35), inset 0 -2px 0 rgba(0,0,0,.08);
+    animation: ffw-w13-tremble 16s ease-in-out infinite;
+    transform-origin: 50% 0;
+  }
+  /* vent slots */
+  #ffw-w13 .body::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 5px;
+    height: 7px;
+    background: repeating-linear-gradient(90deg, rgba(0,0,0,.25) 0 2px, transparent 2px 6px);
+    border-radius: 3px;
+  }
+  /* the LED */
+  #ffw-w13 .led {
+    position: absolute;
+    left: 50%;
+    top: 11px;
+    width: 5px;
+    height: 5px;
+    margin-left: -2.5px;
+    border-radius: 50%;
+    background: #e30613;
+    box-shadow: 0 0 6px 2px rgba(227,6,19,.7);
+    animation: ffw-w13-led 3s linear infinite;
+  }
+  @keyframes ffw-w13-led {
+    0%, 90%, 100% { opacity: .15; }
+    93%, 97%      { opacity: 1; }
+  }
+  @keyframes ffw-w13-tremble {
+    0%, 55%, 70%, 100% { transform: rotate(0); }
+    58% { transform: rotate(-2.5deg); }
+    61% { transform: rotate(2.5deg); }
+    64% { transform: rotate(-1.8deg); }
+    67% { transform: rotate(1.2deg); }
+  }
+  /* soft sound rings */
+  #ffw-w13 .ring {
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    width: 60px;
+    height: 60px;
+    margin: -30px 0 0 -30px;
+    border: 2px solid rgba(70,70,70,.45);
+    border-radius: 50%;
+    opacity: 0;
+    animation: ffw-w13-ring 16s ease-out infinite;
+  }
+  #ffw-w13 .ring:nth-child(2) { animation-delay: .5s; }
+  #ffw-w13 .ring:nth-child(3) { animation-delay: 1s; }
+  @keyframes ffw-w13-ring {
+    0%, 56%  { transform: scale(.25); opacity: 0; }
+    59%      { opacity: .8; }
+    74%      { transform: scale(2.6); opacity: 0; }
+    100%     { transform: scale(2.6); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #ffw-w13 .body, #ffw-w13 .ring { animation: none; }
+    #ffw-w13 .led { animation: none; opacity: .8; }
+  }
+</style>
+
+<div id="ffw-w13" aria-hidden="true">
+  <i class="ring"></i><i class="ring"></i><i class="ring"></i>
+  <div class="body"><i class="led"></i></div>
+</div>

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 12-nikolausstiefel</title><link rel="stylesheet" href="preview.css"></head><body>
+<header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
+<main><div class="container"><div class="section"><div class="content-padding">
+<div class="m-preview">Vorschau: <b>12-nikolausstiefel</b> &ndash; Nachbildung der Seite <code>/test</code><br><b>Datums-Effekt:</b> zum Testen <code>?wdate=2026-12-14</code> an die URL hängen (oder <code>FORCE_LIT</code> bzw. <code>FORCE_COUNT</code> im Effekt setzen).</div>
+<h1>test</h1>
+<div class="html-snippet"><h1>Outlook Kalender</h1>
+<p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
+<h2>Test Formular</h2>
+<form action="#">
+<p>Dies ist nur ein Test</p>
+<div class="field-wrapper"><label>Was?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wo?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
+<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+</form>
+<div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
+<div class="download-listing-container">
+<div class="download-listing-element"><a href="#">Anleitung Android - 413,9 KB - PDF</a></div>
+<div class="download-listing-element"><a href="#">Anleitung iOS - 508,2 KB - PDF</a></div>
+</div>
+<h2>Aktuelles aus unserer Feuerwehr</h2>
+<h3>Leistungsprüfung Wasser mit Kameradschaftsabend</h3>
+<p>Dieses Jahr konnten wir mit zwei Gruppen zur Leistungsprüfung antreten, darunter erstmalig zwei Mitglieder unserer Jugendfeuerwehr.</p>
+<h3>Person mittels Drehleiter aus Wohnung gerettet</h3>
+<p>Am heutigen Einsatz wurden wir gemeinsam mit der Drehleiter aus Neuburg zu einer Personenrettung alarmiert.</p>
+<h3>Stammtisch im Dezember</h3>
+<p>Alle Vereinsmitglieder und Feuerwehrinteressierte sind eingeladen.</p>
+</div></div></div></main>
+<footer><div class="container"><div class="m-cols">
+<div><h2 class="h4">Unser Leitsatz</h2><p>Retten - Löschen - Bergen - Schützen</p></div>
+<div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
+<div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
+</div>
+<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+</div></footer>
+<!--
+  12 - Nikolausstiefel (fire boot filling up with presents) - Feuerwehr Wichtel
+  Tiny JavaScript (date check only), no text. Paste into <INJECT_HTML_HERE>.
+
+  A black fire-brigade boot with a reflective stripe stands at the left bottom corner.
+  From 6 December (Nikolaus) on, one more little treat shows up in it every day:
+  Lebkuchenherz, Mandarine, Walnuss, Zuckerstange, Stern, Apfel, Brezn, Glöckchen.
+
+  TESTING: add  ?wdate=2026-12-14  to the page URL to simulate a day,
+  or set FORCE_COUNT below to a number 0..8.
+-->
+<style>
+  #ffw-w12 {
+    --w: clamp(90px, 9vw, 130px);
+    position: fixed;
+    left: 2vw;
+    bottom: 0;
+    width: var(--w);
+    height: auto;
+    z-index: 2147483000;
+    pointer-events: none;
+    filter: drop-shadow(0 3px 3px rgba(0,0,0,.3));
+    overflow: visible;
+  }
+  #ffw-w12 .gift { transform-box: fill-box; transform-origin: 50% 100%; animation: ffw-w12-pop .7s ease-out both; }  /* animates the individual 'scale' property so it composes with the SVG transform attributes */
+  @keyframes ffw-w12-pop { from { scale: .2; opacity: 0; } to { scale: 1; opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { #ffw-w12 .gift { animation: none; } }
+</style>
+
+<svg id="ffw-w12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 150" aria-hidden="true">
+  <!-- boot -->
+  <path d="M38 30H80V98C80 104 104 104 112 112C116 116 114 124 106 124H38Z" fill="#1f1f23" stroke="#0e0e10" stroke-width="2" stroke-linejoin="round"/>
+  <rect x="34" y="26" width="50" height="9" rx="3" fill="#2d2d33" stroke="#0e0e10" stroke-width="1.5"/>
+  <rect x="38" y="62" width="42" height="7" fill="#e6e8ea"/>
+  <rect x="38" y="62" width="42" height="2" fill="#fff" opacity=".7"/>
+  <path d="M38 76H80" stroke="#3a3a42" stroke-width="2"/>
+  <path d="M36 124H108V133H36Z" fill="#5a5a60" stroke="#0e0e10" stroke-width="1.5"/>
+  <path d="M38 36C32 40 32 50 38 54" fill="none" stroke="#0e0e10" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M44 38V58" stroke="#4a4a52" stroke-width="2" opacity=".6"/>
+
+  <!-- treats, shown by script: first N of them -->
+  <g id="ffw-w12-gifts">
+    <!-- 1 Lebkuchenherz -->
+    <g class="gift" transform="translate(52 22)">
+      <path d="M0 10C-12 0-8-12 0-7C8-12 12 0 0 10Z" fill="#8a4b1e" stroke="#5e3010" stroke-width="1.2"/>
+      <path d="M-4 0Q0 3 4 0" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/>
+    </g>
+    <!-- 2 Mandarine -->
+    <g class="gift" transform="translate(70 18)">
+      <circle r="8" fill="#ff8a1f" stroke="#c25f00" stroke-width="1.2"/>
+      <path d="M0-8Q4-13 8-9Q4-6 0-8Z" fill="#3f8a4c"/>
+    </g>
+    <!-- 3 Walnuss -->
+    <g class="gift" transform="translate(44 14)">
+      <ellipse rx="8" ry="6.5" fill="#a97a4a" stroke="#6b4a26" stroke-width="1.2"/>
+      <path d="M0-6V6M-4-4Q-1 0-4 4M4-4Q1 0 4 4" fill="none" stroke="#6b4a26" stroke-width="1"/>
+    </g>
+    <!-- 4 Zuckerstange -->
+    <g class="gift" transform="translate(62 12)">
+      <path d="M-2 14V-2C-2-10 10-10 10-2" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+      <path d="M-2 14V-2C-2-10 10-10 10-2" fill="none" stroke="#c8102e" stroke-width="5" stroke-linecap="round" stroke-dasharray="3 3.6"/>
+    </g>
+    <!-- 5 Stern -->
+    <g class="gift" transform="translate(77 8)">
+      <path d="M0-9L2.6-3L9-2.6L4 1.6L5.6 8L0 4.6L-5.6 8L-4 1.6L-9-2.6L-2.6-3Z" fill="#f5c542" stroke="#b8860b" stroke-width="1"/>
+    </g>
+    <!-- 6 Apfel -->
+    <g class="gift" transform="translate(54 2)">
+      <path d="M0-4C-4-8-11-5-10 2C-9 9-3 11 0 9C3 11 9 9 10 2C11-5 4-8 0-4Z" fill="#c8102e" stroke="#8e0b20" stroke-width="1.2"/>
+      <path d="M0-4Q1-9 4-10" fill="none" stroke="#5a3a1a" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    <!-- 7 Brezn -->
+    <g class="gift" transform="translate(70 -2) scale(.2)">
+      <path d="M20 74C-2 40 22 8 50 8C78 8 102 40 80 74M20 74C38 60 70 52 92 38M80 74C62 60 30 52 8 38" fill="none" stroke="#b86a25" stroke-width="10" stroke-linecap="round" transform="translate(-50 -40)"/>
+    </g>
+    <!-- 8 Gloeckchen -->
+    <g class="gift" transform="translate(40 4)">
+      <path d="M0-8C-6-8-7-2-7 3L-9 7H9L7 3C7-2 6-8 0-8Z" fill="#f5c542" stroke="#b8860b" stroke-width="1.1"/>
+      <circle cy="9" r="2" fill="#b8860b"/>
+    </g>
+  </g>
+</svg>
+
+<script>
+(function () {
+  if (window.__ffwW12) return;
+  window.__ffwW12 = true;
+
+  var FORCE_COUNT = null;   // null = use the date, or a number 0..8
+
+  function today() {
+    var m = /[?&]wdate=(\d{4})-(\d{2})-(\d{2})/.exec(location.search);
+    return m ? new Date(+m[1], +m[2] - 1, +m[3]) : new Date();
+  }
+
+  var count;
+  if (FORCE_COUNT !== null) {
+    count = FORCE_COUNT;
+  } else {
+    var d = today();
+    count = d.getMonth() === 11 ? Math.max(0, Math.min(8, d.getDate() - 5)) : 0;   // 6 Dec -> 1 ... 13 Dec -> 8
+  }
+
+  var gifts = document.querySelectorAll('#ffw-w12-gifts .gift');
+  for (var i = 0; i < gifts.length; i++) {
+    gifts[i].style.display = i < count ? '' : 'none';
+    gifts[i].style.animationDelay = (i * 0.25) + 's';
+  }
+})();
+</script>

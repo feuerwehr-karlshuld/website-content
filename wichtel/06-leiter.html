@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 06-leiter</title><link rel="stylesheet" href="preview.css"></head><body>
+<header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
+<main><div class="container"><div class="section"><div class="content-padding">
+<div class="m-preview">Vorschau: <b>06-leiter</b> &ndash; Nachbildung der Seite <code>/test</code></div>
+<h1>test</h1>
+<div class="html-snippet"><h1>Outlook Kalender</h1>
+<p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
+<h2>Test Formular</h2>
+<form action="#">
+<p>Dies ist nur ein Test</p>
+<div class="field-wrapper"><label>Was?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wo?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
+<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+</form>
+<div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
+<div class="download-listing-container">
+<div class="download-listing-element"><a href="#">Anleitung Android - 413,9 KB - PDF</a></div>
+<div class="download-listing-element"><a href="#">Anleitung iOS - 508,2 KB - PDF</a></div>
+</div>
+<h2>Aktuelles aus unserer Feuerwehr</h2>
+<h3>Leistungsprüfung Wasser mit Kameradschaftsabend</h3>
+<p>Dieses Jahr konnten wir mit zwei Gruppen zur Leistungsprüfung antreten, darunter erstmalig zwei Mitglieder unserer Jugendfeuerwehr.</p>
+<h3>Person mittels Drehleiter aus Wohnung gerettet</h3>
+<p>Am heutigen Einsatz wurden wir gemeinsam mit der Drehleiter aus Neuburg zu einer Personenrettung alarmiert.</p>
+<h3>Stammtisch im Dezember</h3>
+<p>Alle Vereinsmitglieder und Feuerwehrinteressierte sind eingeladen.</p>
+</div></div></div></main>
+<footer><div class="container"><div class="m-cols">
+<div><h2 class="h4">Unser Leitsatz</h2><p>Retten - Löschen - Bergen - Schützen</p></div>
+<div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
+<div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
+</div>
+<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+</div></footer>
+<!--
+  06 - Leiter (ladder leaning on a headline) - Feuerwehr Wichtel
+  Tiny JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+
+  A little wooden ladder leans against the first headline of the page, with a zinc bucket
+  at its foot. It is anchored to the page (scrolls with the content).
+  Falls back to the left viewport edge if no headline is found.
+
+  Tuning: TARGET = which element the ladder leans on, LADDER_H = extra height above it.
+-->
+<style>
+  #ffw-w06 {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2147483000;
+    transform-origin: 50% 100%;
+    animation: ffw-w06-settle 9s ease-in-out infinite alternate;
+    filter: drop-shadow(1px 2px 2px rgba(0,0,0,.3));
+  }
+  @keyframes ffw-w06-settle {
+    from { transform: rotate(7deg); }
+    to   { transform: rotate(8.2deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #ffw-w06 { animation: none; transform: rotate(7deg); }
+  }
+</style>
+
+<svg id="ffw-w06" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 150" width="52" aria-hidden="true" style="left:0;top:0;display:none">
+  <!-- ladder -->
+  <g stroke="#b88a4a" stroke-linecap="round" fill="none">
+    <path d="M10 4V146M38 4V146" stroke-width="5"/>
+    <path d="M10 18H38M10 36H38M10 54H38M10 72H38M10 90H38M10 108H38M10 126H38" stroke-width="3.5"/>
+  </g>
+  <path d="M10 4V146" stroke="#d7b27a" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+  <!-- zinc bucket -->
+  <path d="M46 118h20l-3 26H49z" fill="#aab3b9" stroke="#6b7378" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M46 118c2-9 18-9 20 0" fill="none" stroke="#6b7378" stroke-width="2"/>
+  <path d="M48 126h16" stroke="#6b7378" stroke-width="1.5" opacity=".6"/>
+</svg>
+
+<script>
+(function () {
+  if (window.__ffwW06) return;
+  window.__ffwW06 = true;
+
+  var TARGET = 'main h1, main h2, main h3';
+  var LADDER_H = 70;
+
+  var el = document.getElementById('ffw-w06');
+  if (!el) return;
+  document.documentElement.appendChild(el);   // out of the CMS markup, into document space
+
+  function layout() {
+    var t = document.querySelector(TARGET);
+    var r = t ? t.getBoundingClientRect() : null;
+    if (!r || r.width === 0) {
+      el.style.position = 'fixed';
+      el.style.left = '2vw';
+      el.style.top = '45vh';
+      el.style.display = '';
+      return;
+    }
+    var h = r.height + LADDER_H;
+    el.style.position = 'absolute';
+    el.style.height = h + 'px';
+    el.style.width = (h * 70 / 150) + 'px';
+    el.style.left = (r.left + window.pageXOffset + Math.min(r.width * 0.55, 260)) + 'px';
+    el.style.top = (r.bottom + window.pageYOffset + 6 - h) + 'px';
+    el.style.display = '';
+  }
+
+  function init() { layout(); setTimeout(layout, 600); }
+  if (document.readyState === 'complete') init(); else window.addEventListener('load', init);
+  window.addEventListener('resize', layout);
+})();
+</script>

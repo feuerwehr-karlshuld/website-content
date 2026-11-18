@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 04-beschlagene-scheibe</title><link rel="stylesheet" href="preview.css"></head><body>
+<header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
+<main><div class="container"><div class="section"><div class="content-padding">
+<div class="m-preview">Vorschau: <b>04-beschlagene-scheibe</b> &ndash; Nachbildung der Seite <code>/test</code></div>
+<h1>test</h1>
+<div class="html-snippet"><h1>Outlook Kalender</h1>
+<p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
+<h2>Test Formular</h2>
+<form action="#">
+<p>Dies ist nur ein Test</p>
+<div class="field-wrapper"><label>Was?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wo?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
+<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+</form>
+<div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
+<div class="download-listing-container">
+<div class="download-listing-element"><a href="#">Anleitung Android - 413,9 KB - PDF</a></div>
+<div class="download-listing-element"><a href="#">Anleitung iOS - 508,2 KB - PDF</a></div>
+</div>
+<h2>Aktuelles aus unserer Feuerwehr</h2>
+<h3>Leistungsprüfung Wasser mit Kameradschaftsabend</h3>
+<p>Dieses Jahr konnten wir mit zwei Gruppen zur Leistungsprüfung antreten, darunter erstmalig zwei Mitglieder unserer Jugendfeuerwehr.</p>
+<h3>Person mittels Drehleiter aus Wohnung gerettet</h3>
+<p>Am heutigen Einsatz wurden wir gemeinsam mit der Drehleiter aus Neuburg zu einer Personenrettung alarmiert.</p>
+<h3>Stammtisch im Dezember</h3>
+<p>Alle Vereinsmitglieder und Feuerwehrinteressierte sind eingeladen.</p>
+</div></div></div></main>
+<footer><div class="container"><div class="m-cols">
+<div><h2 class="h4">Unser Leitsatz</h2><p>Retten - Löschen - Bergen - Schützen</p></div>
+<div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
+<div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
+</div>
+<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+</div></footer>
+<!--
+  04 - Beschlagene Scheibe (fogged window with a finger-drawn smiley) - Feuerwehr Wichtel
+  Pure CSS/SVG, no JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+
+  A little window with blue-white Bavarian shutters. The pane is steamed up; somebody
+  draws a smiley into the fog with a finger, then the fog creeps back and wipes it away.
+  Loops every 20 seconds.
+
+  Tuning: --x / --y / --w in #ffw-w04.
+-->
+<style>
+  #ffw-w04 {
+    --x: 3vw;               /* distance from the right viewport edge */
+    --y: 38vh;              /* distance from the top */
+    --w: 170px;
+    position: fixed;
+    right: var(--x);
+    top: var(--y);
+    width: var(--w);
+    height: auto;
+    z-index: 2147483000;
+    pointer-events: none;
+    filter: drop-shadow(1px 3px 3px rgba(0,0,0,.3));
+  }
+  #ffw-w04 .st {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: ffw-w04-draw 20s ease-in-out infinite;
+  }
+  #ffw-w04 .st:nth-of-type(2) { animation-delay: .7s; }
+  #ffw-w04 .st:nth-of-type(3) { animation-delay: 1.5s; }
+  @keyframes ffw-w04-draw {
+    0%   { stroke-dashoffset: 1; opacity: 1; }
+    6%   { stroke-dashoffset: 0; opacity: 1; }
+    78%  { stroke-dashoffset: 0; opacity: 1; }
+    92%  { stroke-dashoffset: 0; opacity: 0; }
+    100% { stroke-dashoffset: 1; opacity: 0; }
+  }
+  #ffw-w04 .drip { animation: ffw-w04-drip 7s ease-in infinite; }
+  #ffw-w04 .drip:nth-of-type(2) { animation-delay: 3.5s; }
+  @keyframes ffw-w04-drip {
+    0%   { transform: translateY(0);    opacity: 0; }
+    10%  { opacity: .8; }
+    70%  { transform: translateY(70px); opacity: .8; }
+    100% { transform: translateY(70px); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #ffw-w04 .st { animation: none; stroke-dashoffset: 0; }
+    #ffw-w04 .drip { animation: none; opacity: 0; }
+  }
+  @media (max-width: 700px) { #ffw-w04 { display: none; } }
+</style>
+
+<svg id="ffw-w04" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 170" aria-hidden="true">
+  <defs>
+    <pattern id="ffw-w04-raute" width="16" height="16" patternUnits="userSpaceOnUse">
+      <rect width="16" height="16" fill="#fff"/>
+      <path d="M8 0L16 8L8 16L0 8z" fill="#0098d4"/>
+    </pattern>
+    <mask id="ffw-w04-mask">
+      <rect width="200" height="170" fill="#fff"/>
+      <g stroke="#000" stroke-width="6" stroke-linecap="round" fill="none">
+        <path class="st" pathLength="1" d="M84 66v10"/>
+        <path class="st" pathLength="1" d="M116 66v10"/>
+        <path class="st" pathLength="1" d="M78 94Q100 118 122 94"/>
+      </g>
+    </mask>
+  </defs>
+  <!-- shutters -->
+  <rect x="1"   y="8" width="38" height="154" fill="url(#ffw-w04-raute)" stroke="#0079a8" stroke-width="2"/>
+  <rect x="161" y="8" width="38" height="154" fill="url(#ffw-w04-raute)" stroke="#0079a8" stroke-width="2"/>
+  <!-- frame -->
+  <rect x="42" y="8" width="116" height="154" fill="#e9e3d6" stroke="#8a6a4a" stroke-width="5"/>
+  <!-- foggy glass -->
+  <rect x="48" y="14" width="104" height="142" fill="rgba(214,232,243,.86)" mask="url(#ffw-w04-mask)"/>
+  <!-- window bar -->
+  <path d="M100 14V156M48 85H152" stroke="#8a6a4a" stroke-width="4"/>
+  <!-- running drops -->
+  <ellipse class="drip" cx="62"  cy="30" rx="2" ry="3.2" fill="#fff" opacity="0"/>
+  <ellipse class="drip" cx="138" cy="40" rx="2" ry="3.2" fill="#fff" opacity="0"/>
+  <!-- sill -->
+  <rect x="34" y="160" width="132" height="7" rx="2" fill="#b9b2a2" stroke="#8a6a4a" stroke-width="1.5"/>
+</svg>

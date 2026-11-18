@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 08-angebrannte-plaetzchen</title><link rel="stylesheet" href="preview.css"></head><body>
+<header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
+<main><div class="container"><div class="section"><div class="content-padding">
+<div class="m-preview">Vorschau: <b>08-angebrannte-plaetzchen</b> &ndash; Nachbildung der Seite <code>/test</code></div>
+<h1>test</h1>
+<div class="html-snippet"><h1>Outlook Kalender</h1>
+<p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
+<h2>Test Formular</h2>
+<form action="#">
+<p>Dies ist nur ein Test</p>
+<div class="field-wrapper"><label>Was?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wo?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
+<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+</form>
+<div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
+<div class="download-listing-container">
+<div class="download-listing-element"><a href="#">Anleitung Android - 413,9 KB - PDF</a></div>
+<div class="download-listing-element"><a href="#">Anleitung iOS - 508,2 KB - PDF</a></div>
+</div>
+<h2>Aktuelles aus unserer Feuerwehr</h2>
+<h3>Leistungsprüfung Wasser mit Kameradschaftsabend</h3>
+<p>Dieses Jahr konnten wir mit zwei Gruppen zur Leistungsprüfung antreten, darunter erstmalig zwei Mitglieder unserer Jugendfeuerwehr.</p>
+<h3>Person mittels Drehleiter aus Wohnung gerettet</h3>
+<p>Am heutigen Einsatz wurden wir gemeinsam mit der Drehleiter aus Neuburg zu einer Personenrettung alarmiert.</p>
+<h3>Stammtisch im Dezember</h3>
+<p>Alle Vereinsmitglieder und Feuerwehrinteressierte sind eingeladen.</p>
+</div></div></div></main>
+<footer><div class="container"><div class="m-cols">
+<div><h2 class="h4">Unser Leitsatz</h2><p>Retten - Löschen - Bergen - Schützen</p></div>
+<div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
+<div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
+</div>
+<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+</div></footer>
+<!--
+  08 - Angebrannte Plaetzchen (burnt cookie + smoke) - Feuerwehr Wichtel
+  Tiny JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+
+  A small burnt cookie sits next to the "cookie settings" link in the footer and
+  smoulders: little grey smoke puffs rise, wobble and fade.
+  The link is found by its href/text (contains "cookie"); if there is none, the cookie
+  sits at the bottom centre of the footer / the viewport.
+-->
+<style>
+  .ffw-w08 {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+  }
+  .ffw-w08 svg { width: 24px; height: 24px; display: block; }
+  .ffw-w08 b {
+    position: absolute;
+    left: 50%;
+    bottom: 16px;
+    width: 14px;
+    height: 14px;
+    margin-left: -7px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(90,90,90,.65) 0, rgba(120,120,120,.35) 55%, rgba(150,150,150,0) 75%);
+    opacity: 0;
+    animation: ffw-w08-smoke 5s ease-out infinite;
+  }
+  .ffw-w08 b:nth-of-type(2) { animation-delay: 1s;   margin-left: -10px; }
+  .ffw-w08 b:nth-of-type(3) { animation-delay: 2s;   margin-left: -4px; }
+  .ffw-w08 b:nth-of-type(4) { animation-delay: 3s;   margin-left: -9px; }
+  .ffw-w08 b:nth-of-type(5) { animation-delay: 4s;   margin-left: -6px; }
+  @keyframes ffw-w08-smoke {
+    0%   { transform: translate(0, 0) scale(.5); opacity: 0; }
+    15%  { opacity: .85; }
+    50%  { transform: translate(6px, -34px) scale(1.4); }
+    100% { transform: translate(-5px, -78px) scale(2.6); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ffw-w08 b { animation: none; opacity: 0; }
+  }
+</style>
+
+<script>
+(function () {
+  if (window.__ffwW08) return;
+  window.__ffwW08 = true;
+
+  var COOKIE = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="#6b4423" stroke="#2b1a0c" stroke-width="1.5"/>' +
+    '<path d="M4 14c3 5 12 6 16 0c-1 6-6 9-10 8c-4-1-6-4-6-8z" fill="#2b1a0c" opacity=".55"/>' +
+    '<circle cx="8" cy="9" r="1.9" fill="#1a1008"/><circle cx="15" cy="8" r="1.6" fill="#1a1008"/>' +
+    '<circle cx="14" cy="14" r="2" fill="#1a1008"/><circle cx="8.5" cy="15" r="1.4" fill="#1a1008"/>' +
+    '<path d="M17 3c2 2 3 4 3 6" stroke="#1a1008" stroke-width="1.2" fill="none" opacity=".5"/></svg>';
+
+  var n = document.createElement('div');
+  n.className = 'ffw-w08';
+  n.setAttribute('aria-hidden', 'true');
+  n.style.zIndex = '2147483000';
+  n.innerHTML = COOKIE + '<b></b><b></b><b></b><b></b><b></b>';
+  document.documentElement.appendChild(n);
+
+  function findLink() {
+    var links = document.querySelectorAll('footer a, a');
+    for (var i = 0; i < links.length; i++) {
+      var a = links[i];
+      if (/cookie/i.test(a.getAttribute('href') || '') || /cookie/i.test(a.textContent || '')) return a;
+    }
+    return null;
+  }
+
+  function layout() {
+    var a = findLink();
+    var r = a ? a.getBoundingClientRect() : null;
+    if (r && r.width > 0) {
+      n.style.position = 'absolute';
+      n.style.left = (r.left + window.pageXOffset - 30) + 'px';
+      n.style.top = (r.top + window.pageYOffset + r.height / 2 - 12) + 'px';
+      return;
+    }
+    var f = document.querySelector('footer');
+    var fr = f ? f.getBoundingClientRect() : null;
+    if (fr && fr.width > 0) {
+      n.style.position = 'absolute';
+      n.style.left = (fr.left + window.pageXOffset + fr.width / 2) + 'px';
+      n.style.top = (fr.bottom + window.pageYOffset - 40) + 'px';
+    } else {
+      n.style.position = 'fixed';
+      n.style.left = '50vw';
+      n.style.top = 'calc(100vh - 50px)';
+    }
+  }
+
+  function init() { layout(); setTimeout(layout, 600); }
+  if (document.readyState === 'complete') init(); else window.addEventListener('load', init);
+  window.addEventListener('resize', layout);
+})();
+</script>

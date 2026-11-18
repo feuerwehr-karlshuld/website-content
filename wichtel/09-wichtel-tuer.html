@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vorschau 09-wichtel-tuer</title><link rel="stylesheet" href="preview.css"></head><body>
+<header class="m-header"><div class="container m-header-in"><a class="m-back" href="index.html">&larr; Übersicht</a><span>Aktuelles &middot; Einsatzberichte &middot; Termine &middot; Kontakt</span></div></header>
+<main><div class="container"><div class="section"><div class="content-padding">
+<div class="m-preview">Vorschau: <b>09-wichtel-tuer</b> &ndash; Nachbildung der Seite <code>/test</code></div>
+<h1>test</h1>
+<div class="html-snippet"><h1>Outlook Kalender</h1>
+<p>Hier gibt es immer wieder Neues zu entdecken. Wir freuen uns über jeden neuen Kameraden und jede neue Kameradin.</p></div>
+<h2>Test Formular</h2>
+<form action="#">
+<p>Dies ist nur ein Test</p>
+<div class="field-wrapper"><label>Was?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wo?</label><input type="text"></div>
+<div class="field-wrapper"><label>Wann? *</label><input type="text"></div>
+<div class="button-wrapper submit"><button type="button">Wasser marsch!</button></div>
+</form>
+<div class="html-snippet"><h1>Excel Sheet</h1><p><img src="pic.svg" alt="" width="360" height="200"></p></div>
+<div class="download-listing-container">
+<div class="download-listing-element"><a href="#">Anleitung Android - 413,9 KB - PDF</a></div>
+<div class="download-listing-element"><a href="#">Anleitung iOS - 508,2 KB - PDF</a></div>
+</div>
+<h2>Aktuelles aus unserer Feuerwehr</h2>
+<h3>Leistungsprüfung Wasser mit Kameradschaftsabend</h3>
+<p>Dieses Jahr konnten wir mit zwei Gruppen zur Leistungsprüfung antreten, darunter erstmalig zwei Mitglieder unserer Jugendfeuerwehr.</p>
+<h3>Person mittels Drehleiter aus Wohnung gerettet</h3>
+<p>Am heutigen Einsatz wurden wir gemeinsam mit der Drehleiter aus Neuburg zu einer Personenrettung alarmiert.</p>
+<h3>Stammtisch im Dezember</h3>
+<p>Alle Vereinsmitglieder und Feuerwehrinteressierte sind eingeladen.</p>
+</div></div></div></main>
+<footer><div class="container"><div class="m-cols">
+<div><h2 class="h4">Unser Leitsatz</h2><p>Retten - Löschen - Bergen - Schützen</p></div>
+<div><h2 class="h4">Quicklinks</h2><p><a href="#">Kreisbrandinspektion Neuburg-Schrobenhausen</a></p></div>
+<div><h2 class="h4">Social Media</h2><p>Auch unterwegs immer auf dem Laufenden bleiben.</p></div>
+</div>
+<p class="m-legal">&copy; 2026 Freiwillige Feuerwehr Karlshuld e.V. &nbsp; <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">Cookie-Einstellungen</a></p>
+</div></footer>
+<!--
+  09 - Wichtel-Tuer (tiny door) - Feuerwehr Wichtel
+  Pure CSS/SVG, no JavaScript, no text. Paste into <INJECT_HTML_HERE>.
+
+  A tiny blue door with a white heart sits on the bottom edge of the viewport. Warm light
+  flickers underneath it, and every now and then the door swings open a crack and closes
+  again - nobody is ever seen.
+
+  Tuning: --x (left offset) and --s (size) in #ffw-w09.
+-->
+<style>
+  #ffw-w09 {
+    --x: 6vw;
+    --s: 1;
+    position: fixed;
+    left: var(--x);
+    bottom: 0;
+    width: 48px;
+    height: 78px;
+    z-index: 2147483000;
+    pointer-events: none;
+    transform: scale(var(--s));
+    transform-origin: 0 100%;
+    perspective: 220px;
+  }
+  /* wall frame */
+  #ffw-w09 .frame {
+    position: absolute;
+    inset: 0;
+    border: 4px solid #6b4a2b;
+    border-bottom: 0;
+    border-radius: 24px 24px 0 0;
+    background: #2a1a0c;
+    box-shadow: 0 0 0 2px rgba(0,0,0,.15);
+    overflow: hidden;
+  }
+  /* the warm light behind the door */
+  #ffw-w09 .glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 40% 90%, #ffe9a8 0, #ffb84a 45%, #7a4a14 100%);
+    animation: ffw-w09-flicker 3.2s ease-in-out infinite alternate;
+  }
+  @keyframes ffw-w09-flicker {
+    from { opacity: .75; }
+    to   { opacity: 1; }
+  }
+  /* the door leaf */
+  #ffw-w09 .door {
+    position: absolute;
+    inset: 0;
+    border-radius: 20px 20px 0 0;
+    background: #0098d4;
+    transform-origin: 0 50%;
+    animation: ffw-w09-open 16s ease-in-out infinite;
+  }
+  #ffw-w09 .door svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  @keyframes ffw-w09-open {
+    0%, 62%   { transform: rotateY(0); }
+    68%, 80%  { transform: rotateY(-58deg); }
+    88%, 100% { transform: rotateY(0); }
+  }
+  /* light line under the door + doormat */
+  #ffw-w09 .sill {
+    position: absolute;
+    left: -8px;
+    right: -8px;
+    bottom: 0;
+    height: 5px;
+    background: linear-gradient(#8f8b84, #6d6962);
+    border-radius: 2px 2px 0 0;
+  }
+  #ffw-w09 .light {
+    position: absolute;
+    left: -4px;
+    right: -4px;
+    bottom: 5px;
+    height: 14px;
+    background: radial-gradient(ellipse at 50% 100%, rgba(255,214,120,.8) 0, rgba(255,214,120,0) 70%);
+    animation: ffw-w09-flicker 2.4s ease-in-out infinite alternate;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #ffw-w09 .door, #ffw-w09 .glow, #ffw-w09 .light { animation: none; }
+  }
+</style>
+
+<div id="ffw-w09" aria-hidden="true">
+  <div class="light"></div>
+  <div class="frame">
+    <div class="glow"></div>
+    <div class="door">
+      <svg viewBox="0 0 40 74" preserveAspectRatio="none">
+        <!-- planks -->
+        <path d="M13 6V74M27 6V74" stroke="#0079a8" stroke-width="1.2" opacity=".7"/>
+        <!-- little Bavarian heart cut-out -->
+        <path d="M20 30C12 24 12 17 17 17C19 17 20 19 20 19C20 19 21 17 23 17C28 17 28 24 20 30Z" fill="#fff"/>
+        <!-- knob -->
+        <circle cx="33" cy="48" r="2.4" fill="#f5c542" stroke="#b8860b" stroke-width=".8"/>
+      </svg>
+    </div>
+  </div>
+  <div class="sill"></div>
+</div>
