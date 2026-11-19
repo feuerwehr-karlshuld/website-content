@@ -54,6 +54,15 @@ var monthNames = map[time.Month]string{
 	11: "November",
 	12: "Dezember",
 }
+var validWeekdays = map[string]bool{
+	"Montag":     true,
+	"Dienstag":   true,
+	"Mittwoch":   true,
+	"Donnerstag": true,
+	"Freitag":    true,
+	"Samstag":    true,
+	"Sonntag":    true,
+}
 var bom = []byte{0xEF, 0xBB, 0xBF}
 
 type BsaScheduleUntyped struct {
@@ -100,7 +109,12 @@ func main() {
 	for _, scheduleEntry := range untypedBsaSchedule {
 		var weekday, rawDate, state string
 		var ok bool
-		if weekday, ok = scheduleEntry.Weekday.(string); !ok || len(strings.TrimSpace(weekday)) == 0 {
+		if weekday, ok = scheduleEntry.Weekday.(string); !ok {
+			continue
+		}
+		weekday = strings.TrimSpace(weekday)
+		if !validWeekdays[weekday] {
+			log.Printf("Skipping entry with invalid weekday %q\n", weekday)
 			continue
 		}
 		if rawDate, ok = scheduleEntry.Date.(string); !ok || len(strings.TrimSpace(rawDate)) == 0 {
@@ -110,19 +124,14 @@ func main() {
 			continue
 		}
 
-		date, err := time.Parse(time.RFC3339, rawDate)
+		localDate, err := time.ParseInLocation(timeFormat, strings.TrimSpace(rawDate), berlin)
 		if err != nil {
 			log.Printf("Failed to parse time %v: %v\n", rawDate, err)
 			continue
 		}
-		if date.Before(time.Now()) {
-			log.Printf("Skipping past date %v\n", date)
+		if localDate.Before(time.Now()) {
+			log.Printf("Skipping past date %v\n", localDate)
 			continue
-		}
-
-		localDate := date.In(berlin)
-		if localDate.Hour() != 0 {
-			log.Fatalf("Retrieved date is not truncated to day, got %v, local: %v\n", rawDate, localDate)
 		}
 
 		month := months[localDate.Month()]
